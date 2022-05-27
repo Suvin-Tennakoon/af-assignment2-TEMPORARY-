@@ -76,7 +76,7 @@ const Supervisor = (props) => {
   }
 
   const { _id } = useParams();
-  const url = "/update/";
+  const url = "/updateuser/";
 
   const data = [props];
 
@@ -88,7 +88,7 @@ const Supervisor = (props) => {
 
       <td className="csan">
         {data.map((upsupervisor) => (
-          <Link to={url + props.supervisor._id}>
+          <Link to={url + props.supervisor._id + "/supervisor"}>
             <button
               type="button"
               className="btn btn-primary"
@@ -132,7 +132,7 @@ const Panelmember = (props) => {
   }
 
   const { _id } = useParams();
-  const url = "/panelmember/update/";
+  const url = "/updateuser/";
 
   const data = [props];
 
@@ -144,7 +144,7 @@ const Panelmember = (props) => {
 
       <td className="csan">
         {data.map((uppanelmember) => (
-          <Link to={url + props.panelmember._id}>
+          <Link to={url + props.panelmember._id + "/panelmember"}>
             <button
               type="button"
               className="btn btn-primary"

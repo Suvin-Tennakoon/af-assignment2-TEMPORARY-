@@ -10,7 +10,7 @@ import { useHistory, useParams } from "react-router-dom";
             const{id,type} = useParams()
             //const{type} = useParams()
             const history = useHistory()
-            const url = '/allsup'
+            const url = '/displayUlist'
             
             
             console.log(id,type)
@@ -24,13 +24,34 @@ import { useHistory, useParams } from "react-router-dom";
 
             useEffect(()=>{
                 let getUser = () =>{
-                    axios.get(''+id)
-                    .then((res) =>{
-                        
-                        setfname(res.data.firstname)
-                        setpnum(res.data.pnum)
-                        setEmail(res.data.Email)
-                    })
+                    if(type=="student"){
+                        axios.get('http://localhost:3001/api/student/getById/'+id)
+                        .then((res) =>{
+                            
+                            setfname(res.data.fullname)
+                            setpnum(res.data.pnum)
+                            setEmail(res.data.Email)
+                        })
+                    }
+                    else if(type=="supervisor"){
+                        axios.get('http://localhost:3001/api/supervisor/getSupervisorById/'+id)
+                        .then((res) =>{
+                            
+                            setfname(res.data.fullname)
+                            setpnum(res.data.pnum)
+                            setEmail(res.data.Email)
+                        })
+                    }
+                    else if(type=="panelmember"){
+                        axios.get('http://localhost:3001/api/panelmember/getPanelMemberById/'+id)
+                        .then((res) =>{
+                            
+                            setfname(res.data.fullname)
+                            setpnum(res.data.pnum)
+                            setEmail(res.data.Email)
+                        })
+                    }
+                  
                 }
 
                 getUser()
