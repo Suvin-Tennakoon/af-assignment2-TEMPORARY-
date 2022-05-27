@@ -1,232 +1,260 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 
-import './DisplayUser.css';
-//import axios from 'axios';
+import "./DisplayUser.css";
+import axios from "axios";
 
 const Student = (props) => {
-    
-        function Delete(_id){
-            var result1 = window.confirm('Confirm to delete this Student')
-            if(result1==true){
-            axios.delete('/#'+_id)
-        .then(()=> {
-            alert('Student deleted successfully');
-        }).catch((err) => {
-            alert(err.message);
+  function Delete(_id) {
+    var result1 = window.confirm("Confirm to delete this Student");
+    if (result1 == true) {
+      axios
+        .delete("/#" + _id)
+        .then(() => {
+          alert("Student deleted successfully");
+        })
+        .catch((err) => {
+          alert(err.message);
         });
     }
-    }
-   
-        const { _id } = useParams()
-        const url = '/update/'
+  }
 
-        const data=[props]
-   
-    return(
+  const { _id } = useParams();
+  const url = "/update/";
+
+  const data = [props];
+
+  return (
     <tr>
-      
-        <td className="csan">{props.student.firstname}</td>
-        <td className="csan">{props.student.pnum}</td>
-        <td className="csan">{props.student.Email}</td>
+      <td className="csan">{props.student.firstname}</td>
+      <td className="csan">{props.student.pnum}</td>
+      <td className="csan">{props.student.Email}</td>
 
-        <td className="csan" >
-
-        
+      <td className="csan">
         {data.map((upstudent) => (
-                <Link to={url+props.student._id}>
-                    
-         <button type="button" className="btn btn-primary" style={{marginRight:"20px"}}
-        >Update</button></Link>
+          <Link to={url + props.student._id}>
+            <button
+              type="button"
+              className="btn btn-primary"
+              style={{ marginRight: "20px" }}
+            >
+              Update
+            </button>
+          </Link>
         ))}
 
-            <button type="button" className="btn btn-primary" style={{backgroundColor:"gray"}} onClick={(e) => {
-             Delete(props.student._id);
-          }}>Delete</button>
-
-          
-        </td>
+        <button
+          type="button"
+          className="btn btn-primary"
+          style={{ backgroundColor: "gray" }}
+          onClick={(e) => {
+            Delete(props.student._id);
+          }}
+        >
+          Delete
+        </button>
+      </td>
     </tr>
-);
+  );
 };
 
 //................................................................................................
 
 const Supervisor = (props) => {
-    
-    function Delete(_id){
-        var result2 = window.confirm('Confirm to delete this supervisor')
-        if(result2==true){
-        axios.delete('/#'+_id)
-    .then(()=> {
-        alert('Supervisor deleted successfully');
-    }).catch((err) => {
-        alert(err.message);
-    });
-}
-}
+  function Delete(_id) {
+    var result2 = window.confirm("Confirm to delete this supervisor");
+    if (result2 == true) {
+      axios
+        .delete("/#" + _id)
+        .then(() => {
+          alert("Supervisor deleted successfully");
+        })
+        .catch((err) => {
+          alert(err.message);
+        });
+    }
+  }
 
-    const { _id } = useParams()
-    const url = '/update/'
+  const { _id } = useParams();
+  const url = "/update/";
 
-    const data=[props]
+  const data = [props];
 
-return(
-<tr>
-   
-    <td className="csan">{props.supervisor.firstname}</td>       
-    <td className="csan">{props.supervisor.pnum}</td>
-    <td className="csan">{props.supervisor.Email}</td>
+  return (
+    <tr>
+      <td className="csan">{props.supervisor.firstname}</td>
+      <td className="csan">{props.supervisor.pnum}</td>
+      <td className="csan">{props.supervisor.Email}</td>
 
-    <td className="csan" >
+      <td className="csan">
+        {data.map((upsupervisor) => (
+          <Link to={url + props.supervisor._id}>
+            <button
+              type="button"
+              className="btn btn-primary"
+              style={{ marginRight: "20px" }}
+            >
+              Update
+            </button>
+          </Link>
+        ))}
 
-    
-    {data.map((upsupervisor) => (
-            <Link to={url+props.supervisor._id}>
-                
-     <button type="button" className="btn btn-primary" style={{marginRight:"20px"}}
-    >Update</button></Link>
-    ))}
-    
-
-        <button type="button" className="btn btn-primary" style={{backgroundColor:"gray"}} onClick={(e) => {
-         Delete(props.supervisor._id);
-      }}>Delete</button>
-
-      
-    </td>
-</tr>
-);
+        <button
+          type="button"
+          className="btn btn-primary"
+          style={{ backgroundColor: "gray" }}
+          onClick={(e) => {
+            Delete(props.supervisor._id);
+          }}
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  );
 };
 
 //................................................................................................
 
-
 const Panelmember = (props) => {
-    
-    function Delete(_id){
-        var result3 = window.confirm('Confirm to delete this Panel Member')
-        if(result3==true){
-        axios.delete('/#'+_id)
-    .then(()=> {
-        alert('Panel Member deleted successfully');
-    }).catch((err) => {
-        alert(err.message);
-    });
-}
-}
+  function Delete(_id) {
+    var result3 = window.confirm("Confirm to delete this Panel Member");
+    if (result3 == true) {
+      axios
+        .delete("/#" + _id)
+        .then(() => {
+          alert("Panel Member deleted successfully");
+        })
+        .catch((err) => {
+          alert(err.message);
+        });
+    }
+  }
 
-    const { _id } = useParams()
-    const url = '/update/'
+  const { _id } = useParams();
+  const url = "/update/";
 
-    const data=[props]
+  const data = [props];
 
-return(
-<tr>
-    
-    <td className="csan">{props.panelmember.fullname}</td>       
-    <td className="csan">{props.panelmember.pnum}</td>
-    <td className="csan">{props.panelmember.Email}</td>
-   
-    <td className="csan" >
+  return (
+    <tr>
+      <td className="csan">{props.panelmember.fullname}</td>
+      <td className="csan">{props.panelmember.pnum}</td>
+      <td className="csan">{props.panelmember.Email}</td>
 
-    
-    {data.map((uppanelmember) => (
-            <Link to={url+props.panelmember._id}>
-                
-     <button type="button" className="btn btn-primary" style={{marginRight:"20px"}}>Update</button></Link>
-    ))}
+      <td className="csan">
+        {data.map((uppanelmember) => (
+          <Link to={url + props.panelmember._id}>
+            <button
+              type="button"
+              className="btn btn-primary"
+              style={{ marginRight: "20px" }}
+            >
+              Update
+            </button>
+          </Link>
+        ))}
 
-    <button type="button" className="btn btn-primary" style={{backgroundColor:"gray"}} onClick={(e) => {
-    Delete(props.panelmember._id);
-    }}>Delete</button>
-
-      
-    </td>
-</tr>
-);
+        <button
+          type="button"
+          className="btn btn-primary"
+          style={{ backgroundColor: "gray" }}
+          onClick={(e) => {
+            Delete(props.panelmember._id);
+          }}
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  );
 };
 
+class Userlist extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { Student: [], Supervisor: [], Panelmember: [] };
+  }
 
+  componentDidMount() {
+    axios
+      .get("http://localhost:3001/api/student/getAll")
+      .then((res) => {
+        //get all info about a student
+        this.setState({ Student: res.data });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    axios
+      .get("http://localhost:3001/api/supervisor/getAll")
+      .then((res) => {
+        //get all info about a supervisor
+        this.setState({ Supervisor: res.data });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    axios
+      .get("http://localhost:3001/api/panelmember/getAll")
+      .then((res) => {
+        //get all info about a panelmember
+        this.setState({ Panelmember: res.data });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
-class Userlist extends React.Component{
+  StudentList() {
+    return this.state.Student.map((currentstudent) => {
+      return <Student student={currentstudent} />;
+    });
+  }
 
-    constructor(props){
-        super(props);
-        this.state = {Student:[],Supervisor:[],Panelmember:[]};
-       
-    }
+  SupervisorList() {
+    return this.state.Supervisor.map((currentsupervisor) => {
+      return <Supervisor supervisor={currentsupervisor} />;
+    });
+  }
 
-    componentDidMount() {
-        axios.get('http://localhost:3001/api/student/getAll')
-            .then(res => {
-                //get all info about a student
-                this.setState({Student: res.data});
-            })
-            .catch((err)=>{
-                console.log(err);
-            })
-        axios.get('http://localhost:3001/api/supervisor/getAll')
-            .then(res => {
-                //get all info about a supervisor
-                this.setState({Supervisor: res.data});
-            })
-            .catch((err)=>{
-                console.log(err);
-            })
-        axios.get('http://localhost:3001/api/panelmember/getAll')
-            .then(res => {
-                //get all info about a panelmember
-                this.setState({Panelmember: res.data});
-            })
-            .catch((err)=>{
-                console.log(err);
-            })
-    }
+  PanelmemberList() {
+    return this.state.Panelmember.map((currentPanelmember) => {
+      return <Panelmember panelmember={currentPanelmember} />;
+    });
+  }
 
-    StudentList() {
-        return this.state.Student.map(currentstudent => {
-            return <Student student = {currentstudent}/>;
-        })
-    }
-
-    SupervisorList() {
-        return this.state.Supervisor.map(currentsupervisor => {
-            return <Supervisor supervisor = {currentsupervisor}/>;
-        })
-    }
-
-    PanelmemberList() {
-        return this.state.Panelmember.map(currentPanelmember => {
-            return <Panelmember panelmember = {currentPanelmember}/>;
-        })
-    }
-
-    render(){
-        return(
-            <div><br/><br/>
-            <table  class="chamoditable table table-hover">
-                <thead className="thead-dark">
-                    <tr  className="table-dark">
-                    <th className="csan" scope="col">User's Name</th>
-                    <th  className="csan"scope="col">Phone Number</th>
-                    <th  className="csan"scope="col">Email Address</th> 
-                    <th  className="csan"scope="col"></th> 
-            
-                    </tr>
-                </thead>
-                <tbody>
-                    {/* {this.StudentList()}
-                    {this.SupervisorList()}
-                    {this.PanelmemberList()} */}
-                </tbody>
-                </table><br/>
-               <br/>
-
-                </div>
-        );
-        
-    }
+  render() {
+    return (
+      <div>
+        <br />
+        <br />
+        <table class="chamoditable table table-hover">
+          <thead className="thead-dark">
+            <tr className="table-dark">
+              <th className="csan" scope="col">
+                User's Name
+              </th>
+              <th className="csan" scope="col">
+                Phone Number
+              </th>
+              <th className="csan" scope="col">
+                Email Address
+              </th>
+              <th className="csan" scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.StudentList()}
+            {this.SupervisorList()}
+            {this.PanelmemberList()}
+          </tbody>
+        </table>
+        <br />
+        <br />
+      </div>
+    );
+  }
 }
 
 export default Userlist;

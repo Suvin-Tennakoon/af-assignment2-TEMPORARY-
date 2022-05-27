@@ -10,6 +10,7 @@ import Userlist from "./Components/DisplayUsers/DisplayUsers";
 import registerstudent from "./Components/Register/RegStudent";
 import registerSupervisor from "./Components/Register/RegSupervisor";
 import registerpanelMember from "./Components/Register/RegPanelmember";
+import panelmemallocate from "./Components/PanelMemberAllocation/viewData";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/regstudent" exact component={registerstudent} />
         <Route path="/regsupervisor" exact component={registerSupervisor} />
         <Route path="/regpanel" exact component={registerpanelMember} />
+        <Route path="/panelmemallo" exact component={panelmemallocate} />
         <Route path="/" component={Footer} />
       </switch>
     </Router>
