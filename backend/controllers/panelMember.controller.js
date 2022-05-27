@@ -42,9 +42,17 @@ const getPanelMemberById = (req, res) => {
         .catch(err => res.json(err))
 }
 
+const updatePanelMember = (req, res) => {
+
+    PanelMember.findByIdAndUpdate(req.params.id, {$set:{password:req.body.password, pnum:req.body.pnum, Email:req.body.Email}})
+        .then(() => res.json('Good'))
+        .catch(err => res.status(400).json('Error : ' +err));
+}
+
 module.exports ={
     signUpPanelMember,
     getAllPanelMembers,
     deletePanelMember,
-    getPanelMemberById
+    getPanelMemberById,
+    updatePanelMember
 }
