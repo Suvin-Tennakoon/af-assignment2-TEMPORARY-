@@ -2,15 +2,13 @@
 const Student = require('../models/student.model');
 
 const signUpStudent = (req, res)=> {
-    const firstname = req.body.firstname;
-    const lastname = req.body.lastname;
+    const fullname = req.body.fullname;
     const Email = req.body.Email;
     const password = req.body.password;
     const pnum = req.body.pnum;
 
     const newStudent = new Student({
-        firstname,
-        lastname,
+        fullname,
         pnum,
         Email,
         password
@@ -38,8 +36,15 @@ const deleteStudent = (req, res) => {
         .catch(err => res.status(400).json('Error : ' + err));
 }
 
+const getStudentById = (req, res) => {
+    Student.findById(req.params.id)
+        .then((Student) => res.json(Student))
+        .catch(err => res.json(err))
+}
+
 module.exports ={
     signUpStudent,
     getAllStudents,
-    deleteStudent
+    deleteStudent,
+    getStudentById
 }

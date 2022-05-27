@@ -4,8 +4,7 @@ const cors = require('cors');
 const { Schema }= mongoose;
 
 const newStudentSchema = new Schema({
-    firstname: String,
-    lastname: String,
+    fullname: String,
     pnum: String,
     Email: String,
     password: String
