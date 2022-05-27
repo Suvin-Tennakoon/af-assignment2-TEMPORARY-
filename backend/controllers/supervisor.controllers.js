@@ -2,7 +2,7 @@
 const Supervisor = require('../models/supervisor.model');
 
 const signUpSupervisor = (req, res)=> {
-    const firstname = req.body.fullname;
+    const firstname = req.body.firstname;
     const pnum = req.body.pnum;
     const Email = req.body.Email;
     const password = req.body.password;
