@@ -53,17 +53,18 @@ function UpdateUser(props) {
   const update = (e) => {
     e.preventDefault();
 
-    const updatesupplierlist = {
+    const updateUser = {
       firstname,
       pnum,
       Email,
+      password
     };
 
     if (type == "student") {
       axios
         .put(
           "http://localhost:3001/api/student/updateStudent/" + id ,
-          updatesupplierlist
+          updateUser
         )
         .then(() => {
           alert("Supplier is updated successfully");
@@ -75,8 +76,8 @@ function UpdateUser(props) {
     } else if (type == "supervisor") {
       axios
         .put(
-          "http://localhost:3001/acceptsupplier/update/" + id + "/" + type,
-          updatesupplierlist
+          "http://localhost:3001/api/supervisor/updateSupervisor/" + id ,
+          updateUser
         )
         .then(() => {
           alert("Supplier is updated successfully");
@@ -88,8 +89,8 @@ function UpdateUser(props) {
     } else if (type == "panelmember") {
       axios
         .put(
-          "http://localhost:3001/acceptsupplier/update/" + id + "/" + type,
-          updatesupplierlist
+          "http://localhost:3001/api/panelmember/updatePanelMember/" + id ,
+          updateUser
         )
         .then(() => {
           alert("Supplier is updated successfully");
@@ -179,7 +180,7 @@ function UpdateUser(props) {
                             Password
                           </label>
                           <input
-                            type="email"
+                            type="text"
                             id="form3Example97"
                             class="form-control form-control-lg"
                             defaultValue={password}

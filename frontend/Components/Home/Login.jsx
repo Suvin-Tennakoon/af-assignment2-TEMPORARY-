@@ -111,7 +111,7 @@ class Logins extends React.Component{
             axios.post('/#', logStaff)
                 .then((res) => {
                     if(res.data == 'Login Successful') {
-                        window.location = '/#';
+                        window.location = '/displayUlist';
                     }
                     else {
                         document.getElementById("otherslogin1").className = "form-control is-invalid";
