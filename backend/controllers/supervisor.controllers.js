@@ -53,10 +53,28 @@ const updateSupervisor = (req, res) => {
         .catch(err => res.status(400).json('Error : ' +err));
 }
 
+const checkLoginSupervisor = (req, res) => {
+    const logemail = req.body.logemail;
+    const logpwd = req.body.logpwd;
+
+    Supervisor.find({Email:logemail}).then((Supervisor) => {
+        if((!Supervisor[0]) || (Supervisor[0].password != logpwd)) {
+            res.json('Invalid Username or Password');
+        }
+        else {
+            res.json('Login Successfull');
+        }
+    }).catch((err) => {
+        res.json(err);
+    })
+
+}
+
 module.exports ={
     signUpSupervisor,
     getAllSupervisors,
     deleteSupervisor,
     getSupervisortById,
-    updateSupervisor
+    updateSupervisor,
+    checkLoginSupervisor
 }
