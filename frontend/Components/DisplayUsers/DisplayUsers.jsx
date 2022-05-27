@@ -20,19 +20,19 @@ const Student = (props) => {
   }
 
   const { _id } = useParams();
-  const url = "/update/";
+  const url = "/updateuser/";
 
   const data = [props];
 
   return (
     <tr>
-      <td className="csan">{props.student.firstname}</td>
+      <td className="csan">{props.student.fullname}</td>
       <td className="csan">{props.student.pnum}</td>
       <td className="csan">{props.student.Email}</td>
 
       <td className="csan">
         {data.map((upstudent) => (
-          <Link to={url + props.student._id}>
+          <Link to={url + props.student._id + "/student"}>
             <button
               type="button"
               className="btn btn-primary"
@@ -82,7 +82,7 @@ const Supervisor = (props) => {
 
   return (
     <tr>
-      <td className="csan">{props.supervisor.firstname}</td>
+      <td className="csan">{props.supervisor.fullname}</td>
       <td className="csan">{props.supervisor.pnum}</td>
       <td className="csan">{props.supervisor.Email}</td>
 
@@ -132,7 +132,7 @@ const Panelmember = (props) => {
   }
 
   const { _id } = useParams();
-  const url = "/update/";
+  const url = "/panelmember/update/";
 
   const data = [props];
 

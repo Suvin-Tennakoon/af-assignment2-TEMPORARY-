@@ -13,7 +13,6 @@ class registerstudent extends React.Component{
         *so we need to bind that with library
         */
         this.setStudentfName = this.setStudentfName.bind(this);
-        this.setStudentlName = this.setStudentlName.bind(this);
         this.setStudentPhone = this.setStudentPhone.bind(this);
         this.setStudentEmail = this.setStudentEmail.bind(this);
         this.setStudentPassword = this.setStudentPassword.bind(this);
@@ -22,7 +21,6 @@ class registerstudent extends React.Component{
         this.state = {
 
             fname: '',
-            lname: '',
             phone: '',
             email: '',
             passwords: '',
@@ -33,10 +31,6 @@ class registerstudent extends React.Component{
     //user defined method, takes event input
     setStudentfName(e){
         this.setState({fname:e.target.value});
-    }
-
-    setStudentlName(e) {
-        this.setState({lname:e.target.value});
     }
 
     setStudentPhone(e) {
@@ -56,8 +50,7 @@ class registerstudent extends React.Component{
 
        
         const Student = {
-            firstname: this.state.fname, 
-            lastname: this.state.lname,
+            fullname: this.state.fname, 
             pnum: this.state.phone,
             Email: this.state.email,
             password: this.state.passwords,
@@ -72,12 +65,6 @@ class registerstudent extends React.Component{
           document.getElementById("fr").innerHTML = "Name cannot be empty";
           document.getElementById("fr").className = "invalid-feedback";
       }
-
-      else if(!this.state.lname) {
-        document.getElementById("id2").className = "form-control is-invalid";
-        document.getElementById("ls").innerHTML = "Name cannot be empty";
-        document.getElementById("ls").className = "invalid-feedback";
-    }
 
     else if(!this.state.phone) {
       document.getElementById("id4").className = "form-control is-invalid";
@@ -147,15 +134,6 @@ class registerstudent extends React.Component{
                                     required />
                                     <div id="fr"></div>
                                 </div>
-
-                                <div>
-                                    <label className="form-label" for="form3Example3c">Last Name</label>
-                                    <input type="text" id="id2" className="form-control" 
-                                    value={this.state.lname}
-                                    onChange={this.setStudentlName} required/>
-                                    <div id="ls"></div>
-                                </div>
-
                                 <div>
                                     <label className="form-label" for="form3Example3c">Phone Number</label>
                                     <input type="text" id="id4" className="form-control" 

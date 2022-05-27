@@ -48,7 +48,7 @@ class registerSupervisor extends React.Component {
 
   saveSupervisorData(e) {
     const Supervisor = {
-      firstname: this.state.fname,
+      fullname: this.state.fname,
       pnum: this.state.phone,
       Email: this.state.email,
       password: this.state.passwords,
