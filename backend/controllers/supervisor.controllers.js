@@ -38,15 +38,7 @@ const deleteSupervisor = (req, res) => {
         .catch(err => res.status(400).json('Error : ' + err));
 }
 
-const getDetailsToEdit = (req, res) => {
-    const logMobile = req.params.id;
 
-    Customer.find({cusMobile:logMobile}).then((Customer) => {
-        res.json(Customer);
-    }).catch((err) => {
-        res.json(err);
-    })
-}
 
 const getSupervisortById = (req, res) => {
     Supervisor.findById(req.params.id)
@@ -54,9 +46,17 @@ const getSupervisortById = (req, res) => {
         .catch(err => res.json(err))
 }
 
+const updateSupervisor = (req, res) => {
+
+    Supervisor.findByIdAndUpdate(req.params.id, {$set:{password:req.body.password, pnum:req.body.pnum, Email:req.body.Email, title:req.body.title}})
+        .then(() => res.json('Good'))
+        .catch(err => res.status(400).json('Error : ' +err));
+}
+
 module.exports ={
     signUpSupervisor,
     getAllSupervisors,
     deleteSupervisor,
-    getSupervisortById
+    getSupervisortById,
+    updateSupervisor
 }
