@@ -36,8 +36,15 @@ const deletePanelMember = (req, res) => {
         .catch(err => res.status(400).json('Error : ' + err));
 }
 
+const getPanelMemberById = (req, res) => {
+    PanelMember.findById(req.params.id)
+        .then((PanelMember) => res.json(PanelMember))
+        .catch(err => res.json(err))
+}
+
 module.exports ={
     signUpPanelMember,
     getAllPanelMembers,
-    deletePanelMember
+    deletePanelMember,
+    getPanelMemberById
 }

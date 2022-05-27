@@ -2,14 +2,14 @@
 const Supervisor = require('../models/supervisor.model');
 
 const signUpSupervisor = (req, res)=> {
-    const firstname = req.body.firstname;
+    const fullname = req.body.fullname;
     const pnum = req.body.pnum;
     const Email = req.body.Email;
     const password = req.body.password;
     const title = req.body.title;
 
     const newSupervisor = new Supervisor({
-        firstname,
+        fullname,
         pnum,
         Email,
         password,
@@ -38,8 +38,25 @@ const deleteSupervisor = (req, res) => {
         .catch(err => res.status(400).json('Error : ' + err));
 }
 
+const getDetailsToEdit = (req, res) => {
+    const logMobile = req.params.id;
+
+    Customer.find({cusMobile:logMobile}).then((Customer) => {
+        res.json(Customer);
+    }).catch((err) => {
+        res.json(err);
+    })
+}
+
+const getSupervisortById = (req, res) => {
+    Supervisor.findById(req.params.id)
+        .then((Supervisor) => res.json(Supervisor))
+        .catch(err => res.json(err))
+}
+
 module.exports ={
     signUpSupervisor,
     getAllSupervisors,
-    deleteSupervisor
+    deleteSupervisor,
+    getSupervisortById
 }
