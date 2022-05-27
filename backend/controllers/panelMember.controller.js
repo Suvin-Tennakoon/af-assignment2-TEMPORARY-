@@ -49,10 +49,28 @@ const updatePanelMember = (req, res) => {
         .catch(err => res.status(400).json('Error : ' +err));
 }
 
+const checkLoginPanelMember = (req, res) => {
+    const logemail = req.body.logemail;
+    const logpwd = req.body.logpwd;
+
+    PanelMember.find({Email:logemail}).then((PanelMember) => {
+        if((!PanelMember[0]) || (PanelMember[0].password != logpwd)) {
+            res.json('Invalid Username or Password');
+        }
+        else {
+            res.json('Login Successfull');
+        }
+    }).catch((err) => {
+        res.json(err);
+    })
+
+}
+
 module.exports ={
     signUpPanelMember,
     getAllPanelMembers,
     deletePanelMember,
     getPanelMemberById,
-    updatePanelMember
+    updatePanelMember,
+    checkLoginPanelMember
 }

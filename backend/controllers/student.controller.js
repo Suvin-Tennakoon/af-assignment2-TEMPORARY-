@@ -49,10 +49,28 @@ const updateStudent = (req, res) => {
         .catch(err => res.status(400).json('Error : ' +err));
 }
 
+const checkLoginStudent = (req, res) => {
+    const logemail = req.body.logemail;
+    const logpwd = req.body.logpwd;
+
+    Student.find({Email:logemail}).then((Student) => {
+        if((!Student[0]) || (Student[0].password != logpwd)) {
+            res.json('Invalid Username or Password');
+        }
+        else {
+            res.json('Login Successfull');
+        }
+    }).catch((err) => {
+        res.json(err);
+    })
+
+}
+
 module.exports ={
     signUpStudent,
     getAllStudents,
     deleteStudent,
     getStudentById,
-    updateStudent
+    updateStudent,
+    checkLoginStudent
 }
