@@ -10,6 +10,6 @@ router.get('/getAll', getAllSupervisors);
 router.delete('/delete/:id', deleteSupervisor);
 router.get('/getSupervisorById/:id', getSupervisortById);
 router.put('/updateSupervisor/:id', updateSupervisor);
-routes.get('/checkLogin', checkLoginSupervisor);
+router.get('/checkLogin', checkLoginSupervisor);
 
 module.exports = router;
