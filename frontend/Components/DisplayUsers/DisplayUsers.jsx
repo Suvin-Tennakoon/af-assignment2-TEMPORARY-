@@ -9,7 +9,7 @@ const Student = (props) => {
     var result1 = window.confirm("Confirm to delete this Student");
     if (result1 == true) {
       axios
-        .delete("/#" + _id)
+        .delete("http://localhost:3001/api/student/delete/" + _id)
         .then(() => {
           alert("Student deleted successfully");
         })
@@ -65,7 +65,7 @@ const Supervisor = (props) => {
     var result2 = window.confirm("Confirm to delete this supervisor");
     if (result2 == true) {
       axios
-        .delete("/#" + _id)
+        .delete("http://localhost:3001/api/supervisor/delete/" + _id)
         .then(() => {
           alert("Supervisor deleted successfully");
         })
@@ -121,7 +121,7 @@ const Panelmember = (props) => {
     var result3 = window.confirm("Confirm to delete this Panel Member");
     if (result3 == true) {
       axios
-        .delete("/#" + _id)
+        .delete("http://localhost:3001/api/panelmember/delete/" + _id)
         .then(() => {
           alert("Panel Member deleted successfully");
         })

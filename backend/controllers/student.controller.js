@@ -32,7 +32,14 @@ const getAllStudents = (req, res) => {
     })
 }
 
+const deleteStudent = (req, res) => {
+    Student.findByIdAndDelete(req.params.id)
+        .then(() => res.json('Request Deleted.'))
+        .catch(err => res.status(400).json('Error : ' + err));
+}
+
 module.exports ={
     signUpStudent,
-    getAllStudents
+    getAllStudents,
+    deleteStudent
 }
