@@ -21,10 +21,10 @@ const panelMemberRoutes = require('./routes/panelMember.routes');
 app.use("/api/panelmember", panelMemberRoutes);
 
 const studentRoutes = require('./routes/student.routes');
-app.use("/api/student");
+app.use("/api/student",studentRoutes);
 
 const supervisorRoutes = require('./routes/supervisor.routes');
-app.use('api/supervisor');
+app.use('/api/supervisor',supervisorRoutes);
 
 
 app.listen(3001, () => {

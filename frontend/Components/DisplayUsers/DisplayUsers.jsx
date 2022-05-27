@@ -189,6 +189,7 @@ class Userlist extends React.Component {
     axios
       .get("http://localhost:3001/api/supervisor/getAll")
       .then((res) => {
+        console.log(res.data);
         //get all info about a supervisor
         this.setState({ Supervisor: res.data });
       })
@@ -245,8 +246,11 @@ class Userlist extends React.Component {
             </tr>
           </thead>
           <tbody>
+            <h5 style={{ textAlign: "center" }}>------Student-----</h5>
             {this.StudentList()}
+            <h5>-----Supervisor-----</h5>
             {this.SupervisorList()}
+            <h5>-----Panel Member------</h5>
             {this.PanelmemberList()}
           </tbody>
         </table>

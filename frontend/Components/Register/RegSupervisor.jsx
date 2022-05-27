@@ -83,6 +83,7 @@ class registerSupervisor extends React.Component {
         return;
       }
     } else {
+      console.log(Supervisor)
         axios
           .post("http://localhost:3001/api/supervisor/add", Supervisor)
           .then(() => {

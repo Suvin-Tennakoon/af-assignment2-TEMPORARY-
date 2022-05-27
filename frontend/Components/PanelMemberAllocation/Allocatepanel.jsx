@@ -1,31 +1,41 @@
 import React, { Component } from "react";
 import axios from "axios";
+import "./Allocatepannel.css";
 
 const MemberList = (props) => {
   return (
     <tr>
-      <td className="csan">{this.MemberList}</td>
+      <td className="csan">{props.MemberList()}</td>
 
       <td className="csan">
         <input
           type={"text"}
-          placeholder="Group ID"
-          value={this.state.groupid}
-          onChange={this.setgroupid()}
-        />{" "}
-        &nbsp;
+          className="form-control"
+          placeholder="Group ID *"
+          value={props.groupid}
+          onChange={props.setgroupid()}
+        />
+        {/* <div onChange={props.setpannel()}>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Panel Member</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+        &nbsp; */}
         <input
           type={"text"}
-          placeholder="panel member name"
-          value={this.panelallocate}
-          onChange={this.setpannel()}
-        />{" "}
-        &nbsp;
+          className="form-control"
+          placeholder="panel member Email *"
+          value={props.panelallocate}
+          onChange={props.setpannel()}
+        />
         <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
           <button
             type="button"
             className="btn btn-primary btn-lg"
-            onClick={this.addbutton()}
+            onClick={props.addbutton()}
           >
             Add
           </button>
@@ -40,6 +50,7 @@ export default class panelmemallocate extends Component {
     super(props);
     this.state = {
       MemberList: [],
+      panel: [],
       groupid: "",
       panelallocate: "",
     };
@@ -58,6 +69,7 @@ export default class panelmemallocate extends Component {
 
   addbutton(e) {
     const Members = {
+      id: this.state._id,
       memberlist: this.state.MemberList,
       Groupid: this.state.groupid,
       PanelAllo: this.state.panelallocate,
@@ -66,7 +78,7 @@ export default class panelmemallocate extends Component {
     axios
       .post("#", Members)
       .then(() => {
-        alert("Panel Member and Group Allocated");
+        alert("Panel Member and Group ID Allocated");
       })
       .catch((err) => {
         alert(err.message);
@@ -79,6 +91,16 @@ export default class panelmemallocate extends Component {
       .then((res) => {
         //get all info about groups
         this.setState({ MemberList: res.data });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    axios
+      .get("http://localhost:3001/api/panelmember/getAll")
+      .then((res) => {
+        //get all info about groups
+        this.setState({ panel: res.data });
       })
       .catch((err) => {
         console.log(err);

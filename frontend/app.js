@@ -10,7 +10,7 @@ import Userlist from "./Components/DisplayUsers/DisplayUsers";
 import registerstudent from "./Components/Register/RegStudent";
 import registerSupervisor from "./Components/Register/RegSupervisor";
 import registerpanelMember from "./Components/Register/RegPanelmember";
-import panelmemallocate from "./Components/PanelMemberAllocation/viewData";
+import panelmemallocate from "./Components/PanelMemberAllocation/Allocatepanel";
 
 function App() {
   return (
