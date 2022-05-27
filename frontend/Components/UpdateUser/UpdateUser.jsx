@@ -13,6 +13,7 @@ function UpdateUser(props) {
   const [firstname, setfname] = useState();
   const [pnum, setpnum] = useState();
   const [Email, setEmail] = useState();
+  const[password,setpassword] = useState();
 
   useEffect(() => {
     let getUser = () => {
@@ -23,6 +24,7 @@ function UpdateUser(props) {
             setfname(res.data.fullname);
             setpnum(res.data.pnum);
             setEmail(res.data.Email);
+            setpassword(res.data.password);
           });
       } else if (type == "supervisor") {
         axios
@@ -31,6 +33,7 @@ function UpdateUser(props) {
             setfname(res.data.fullname);
             setpnum(res.data.pnum);
             setEmail(res.data.Email);
+            setpassword(res.data.password);
           });
       } else if (type == "panelmember") {
         axios
@@ -39,6 +42,7 @@ function UpdateUser(props) {
             setfname(res.data.fullname);
             setpnum(res.data.pnum);
             setEmail(res.data.Email);
+            setpassword(res.data.password);
           });
       }
     };
@@ -58,7 +62,7 @@ function UpdateUser(props) {
     if (type == "student") {
       axios
         .put(
-          "http://localhost:3001/acceptsupplier/update/" + id + "/" + type,
+          "http://localhost:3001/api/student/updateStudent/" + id ,
           updatesupplierlist
         )
         .then(() => {
@@ -170,6 +174,20 @@ function UpdateUser(props) {
                           />
                         </div>
 
+                        <div class="form-outline mb-4">
+                          <label class="form-label" for="form3Example97">
+                            Password
+                          </label>
+                          <input
+                            type="email"
+                            id="form3Example97"
+                            class="form-control form-control-lg"
+                            defaultValue={password}
+                            onChange={(e) => {
+                              setpassword(e.target.value);
+                            }}
+                          />
+                        </div>
                         <div class="d-flex justify-content-end pt-3">
                           <button
                             type="submit"
