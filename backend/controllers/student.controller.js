@@ -53,5 +53,6 @@ module.exports ={
     signUpStudent,
     getAllStudents,
     deleteStudent,
-    getStudentById
+    getStudentById,
+    updateStudent
 }
