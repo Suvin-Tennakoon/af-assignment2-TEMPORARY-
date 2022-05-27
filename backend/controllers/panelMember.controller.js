@@ -30,7 +30,14 @@ const getAllPanelMembers = (req, res) => {
     })
 }
 
+const deletePanelMember = (req, res) => {
+    PanelMember.findByIdAndDelete(req.params.id)
+        .then(() => res.json('Request Deleted.'))
+        .catch(err => res.status(400).json('Error : ' + err));
+}
+
 module.exports ={
     signUpPanelMember,
-    getAllPanelMembers
+    getAllPanelMembers,
+    deletePanelMember
 }

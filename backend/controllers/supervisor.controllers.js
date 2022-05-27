@@ -32,7 +32,14 @@ const getAllSupervisors = (req, res) => {
     })
 }
 
+const deleteSupervisor = (req, res) => {
+    Supervisor.findByIdAndDelete(req.params.id)
+        .then(() => res.json('Request Deleted.'))
+        .catch(err => res.status(400).json('Error : ' + err));
+}
+
 module.exports ={
     signUpSupervisor,
-    getAllSupervisors
+    getAllSupervisors,
+    deleteSupervisor
 }
