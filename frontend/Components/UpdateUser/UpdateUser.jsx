@@ -4,7 +4,6 @@ import { useHistory, useParams } from "react-router-dom";
 
 function UpdateUser(props) {
   const { id, type } = useParams();
-  //const{type} = useParams()
   const history = useHistory();
   const url = "/displayUlist";
 
@@ -13,7 +12,61 @@ function UpdateUser(props) {
   const [firstname, setfname] = useState();
   const [pnum, setpnum] = useState();
   const [Email, setEmail] = useState();
-  const[password,setpassword] = useState();
+  const [password,setpassword] = useState();
+  const [title, settitle] = useState();
+
+  const radBtn = () => {
+    if(type == 'supervisor'){
+      return (
+          <div onChange={settitle}>
+            <div className="form-check">
+              <input
+                  className="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="flexRadioDefault1"
+                  value="Supervisor"
+                  checked={()=> {
+                    if(title == 'Supervisor'){
+                      return true;
+                    }
+                    else
+                      return false;
+                  }}
+              />
+              <label
+                  className="form-check-label"
+                  htmlFor="flexRadioDefault1"
+              >
+                Supervisor
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                  className="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="flexRadioDefault2"
+                  value="Co-Supervisor"
+                  checked={()=> {
+                    if(title == 'Co-Supervisor'){
+                      return true;
+                    }
+                    else
+                      return false;
+                  }}
+              />
+              <label
+                  className="form-check-label"
+                  htmlFor="flexRadioDefault2"
+              >
+                Co-Supervisor
+              </label>
+            </div>
+          </div>
+      )
+    }
+  }
 
   useEffect(() => {
     let getUser = () => {
@@ -34,6 +87,7 @@ function UpdateUser(props) {
             setpnum(res.data.pnum);
             setEmail(res.data.Email);
             setpassword(res.data.password);
+            settitle(res.data.title);
           });
       } else if (type == "panelmember") {
         axios
@@ -188,6 +242,10 @@ function UpdateUser(props) {
                             }}
                           />
                         </div>
+
+                        {radBtn()}
+
+
                         <div class="d-flex justify-content-end pt-3">
                           <button
                             type="submit"
