@@ -249,7 +249,7 @@ class Userlist extends React.Component {
             </tr>
           </thead>
           <tbody>
-            <h5 style={{ textAlign: "center" }}>------Student-----</h5>
+            <h5 >------Student-----</h5>
             {this.StudentList()}
             <h5>-----Supervisor-----</h5>
             {this.SupervisorList()}

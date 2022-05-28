@@ -14,13 +14,15 @@ import panelmemallocate from "./Components/PanelMemberAllocation/Allocatepanel";
 import UpdateUser from "./Components/UpdateUser/UpdateUser";
 import createStudentGroups from "./Components/CreateGroups/CreateGroup";
 import DashBord from "./Components/StudentDashBord/StudentDashbord";
+import RegisterTopic from "./Components/TopicRegistration/TopicRegistration";
+import SupervisorSelection from "./Components/SelectSupervisor/SupervisorSelection";
 
 function App() {
   return (
     <Router>
       <switch>
         <Route path="/" exact component={Header} />
-        <Route path="/" exact component={NavBar} />
+        <Route path="/"  component={NavBar} />
         <Route path="/aboutUs" exact component={AboutUs} />
         <Route path="/" exact component={Hcontent} />
         <Route path="/" exact component={Logins} />
@@ -32,6 +34,8 @@ function App() {
         <Route path="/updateuser/:id/:type" exact component={UpdateUser} />
         <Route path="/createstd" exact component={createStudentGroups} />
         <Route path="/dashbord" exact component={DashBord} />
+        <Route path="/registertopic" exact component={RegisterTopic} />
+        <Route path="/selectsupervisor" exact component={SupervisorSelection} />
         <Route path="/" component={Footer} />
       </switch>
     </Router>
