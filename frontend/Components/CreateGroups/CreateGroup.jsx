@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-//import axios from 'axios';
+import axios from 'axios';
 
 class createStudentGroups extends React.Component {
   constructor(props) {
@@ -44,10 +44,10 @@ class createStudentGroups extends React.Component {
     console.log("MemberGroup Data", this.state);
 
     const GroupMember = {
-      mone: this.state.memberone,
-      mtwo: this.state.membertwo,
-      mthree: this.state.memberthree,
-      mfour: this.state.memberfour,
+      leader: this.state.memberone,
+      member2: this.state.membertwo,
+      member3: this.state.memberthree,
+      member4: this.state.memberfour,
     };
 
     //send data to backend
@@ -79,13 +79,15 @@ class createStudentGroups extends React.Component {
 
     //   else{
     axios
-      .post("http://localhost:3001/api/member/add", GroupMember)
+      .post("http://localhost:3001/api/projectGroup/add", GroupMember)
       .then(() => {
         alert("Member Data Successfuly Inserted");
       })
       .catch((err) => {
         alert(err.message);
       });
+
+      e.preventDefault();
   }
   //after submission, user will redirected here
   //window.location = '/';
@@ -120,7 +122,6 @@ class createStudentGroups extends React.Component {
                               id="id1"
                               placeholder=" Leaders' Email *"
                               className="form-control"
-                              pattern=".+@globex\.com"
                               value={this.state.memberone}
                               onChange={this.setMemberone}
                               required
@@ -137,7 +138,6 @@ class createStudentGroups extends React.Component {
                               id="id2"
                               placeholder=" Member02 Email *"
                               className="form-control"
-                              pattern=".+@globex\.com"
                               value={this.state.membertwo}
                               onChange={this.setMembertwo}
                               required
@@ -150,11 +150,10 @@ class createStudentGroups extends React.Component {
                               member03 Email
                             </label> */}
                             <input
-                              type="memberthree"
+                              type="text"
                               id="id3"
                               placeholder=" Member03 Email *"
                               className="form-control"
-                              pattern=".+@globex\.com"
                               value={this.state.memberthree}
                               onChange={this.setMemberthree}
                               required
@@ -167,11 +166,10 @@ class createStudentGroups extends React.Component {
                               Member04 Email
                             </label> */}
                             <input
-                              type="password"
+                              type="text"
                               id="id4"
                               placeholder=" Member04 Email *"
                               className="form-control"
-                              pattern=".+@globex\.com"
                               value={this.state.memberfour}
                               onChange={this.setMemberfour}
                               required
@@ -182,7 +180,7 @@ class createStudentGroups extends React.Component {
 
                           <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                             <button
-                              type="button"
+                              type="submit"
                               className="btn btn-primary btn-lg"
                               onClick={this.saveMemberGroup}
                             >
