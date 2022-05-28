@@ -1,5 +1,6 @@
 
 const PanelMember = require('../models/panelMember.model');
+const Admin = require('../models/admin.model');
 
 const signUpPanelMember = (req, res)=> {
     const fullname = req.body.fullname;
@@ -53,17 +54,28 @@ const checkLoginPanelMember = (req, res) => {
     const logemail = req.body.logemail;
     const logpwd = req.body.logpwd;
 
-    PanelMember.find({Email:logemail}).then((PanelMember) => {
-        if((!PanelMember[0]) || (PanelMember[0].password != logpwd)) {
-            res.json('Invalid Username or Password');
-        }
-        else {
-            res.json('Login Successfull');
-        }
-    }).catch((err) => {
-        res.json(err);
-    })
-
+    if(logemail.split(0,4) == 'admin'){
+        Admin.find({Email:logemail}).then((Admin) => {
+            if((!Admin[0]) || (Admin[0].password != logpwd)){
+                res.json('Invalid Username or Password');
+            }
+            else {
+                res.json('Login Successfull');
+            }
+        })
+    }
+    else {
+        PanelMember.find({Email:logemail}).then((PanelMember) => {
+            if((!PanelMember[0]) || (PanelMember[0].password != logpwd)) {
+                res.json('Invalid Username or Password');
+            }
+            else {
+                res.json('Login Successfull');
+            }
+        }).catch((err) => {
+            res.json(err);
+        })
+    }
 }
 
 module.exports ={
