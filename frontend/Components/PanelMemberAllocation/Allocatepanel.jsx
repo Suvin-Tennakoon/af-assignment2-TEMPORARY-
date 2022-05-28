@@ -96,15 +96,15 @@ export default class panelmemallocate extends Component {
         console.log(err);
       });
 
-    axios
-      .get("http://localhost:3001/api/panelmember/getAll")
-      .then((res) => {
-        //get all info about groups
-        this.setState({ panel: res.data });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // axios
+    //   .get("http://localhost:3001/api/panelmember/getAll")
+    //   .then((res) => {
+    //     //get all info about groups
+    //     this.setState({ panel: res.data });
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   }
 
   MemberList() {
