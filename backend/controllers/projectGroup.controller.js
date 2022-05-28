@@ -39,7 +39,18 @@ const getAllProjectGroups = (req, res) => {
     })
 }
 
+const updatePM_and_ID = (req, res) => {
+    const mongoId = req.body.id;
+    const grpID = req.body.grpID;
+    const allocatedPM = req.body.allocatedPM;
+
+    ProjectGroup.findByIdAndUpdate(mongoId, {$set:{grpID:grpID, allocatedPM:allocatedPM}})
+        .then(() => res.json('Good'))
+        .catch(err => res.status(400).json('Error : ' +err));
+}
+
 module.exports = {
     addNewProjectGroup,
-    getAllProjectGroups
+    getAllProjectGroups,
+    updatePM_and_ID
 }
