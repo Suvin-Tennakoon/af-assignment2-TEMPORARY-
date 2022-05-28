@@ -1,6 +1,6 @@
 import './Login.css';
 import React, { Component } from 'react';
-
+import axios from 'axios';
 
 
 class Logins extends React.Component{
@@ -61,12 +61,12 @@ class Logins extends React.Component{
             logpwd: this.state.stupwd
         }
 
-        axios.get('http://localhost:3001/api/student/checkLogin', logstudent)
+        axios.post('http://localhost:3001/api/student/checkLogin', logstudent)
             .then((res) => {
                 if(res.data == 'Login Successfull') {
                     // localStorage.setItem('customer', this.state.cusMobile);
-                    alert("hari");
                    // window.location = '/';
+                   alert("hari")
                 }
                 else {
                     document.getElementById("chmdilog1").className = "form-control is-invalid";
@@ -84,36 +84,15 @@ class Logins extends React.Component{
     loginWorkingPersonel(e) {
 
         let logStaff = {
-            logUserName: this.state.wokeremail,
-            logpw:this.state.workerPW
+            logemail: this.state.wokeremail,
+            logpwd:this.state.workerPW
         }
-
-        // if(logStaff.logUserName.substring(0,3).toLocaleUpperCase() == 'EMP' ) {
-
-        //     logStaff.logUserName = logStaff.logUserName.toLocaleUpperCase();
-            
-        //     axios.post('http://localhost:3001/api/Employee/loginEmployee', logStaff)
-        //         .then((res) => {
-        //             if(res.data == 'Login Successfull') {
-        //                 window.location = '/empProfile/'+logStaff.logUserName;
-        //             }
-
-        //             else {
-        //                 document.getElementById("otherslogin1").className = "form-control is-invalid";
-        //                 document.getElementById("otherslogin2").className = "form-control is-invalid";
-        //                 document.getElementById("otherslogin3").innerHTML = 'Invalid Username or Password';
-        //                 document.getElementById("otherslogin3").className = "invalid-feedback";
-        //             }
-        //         }).catch((err) => {
-        //             alert(err.message);
-        //         })
-        // }
-
-        // else {
-            axios.post('/#', logStaff)
+        console.log(logStaff)
+            axios.post('http://localhost:3001/api/supervisor/checkLogin', logStaff)
                 .then((res) => {
-                    if(res.data == 'Login Successful') {
-                        window.location = '/displayUlist';
+                    if(res.data == 'Login Successfull') {
+                        //window.location = '/displayUlist';
+                        alert("hari")
                     }
                     else {
                         document.getElementById("otherslogin1").className = "form-control is-invalid";
@@ -124,31 +103,29 @@ class Logins extends React.Component{
                 }).catch((err) => {
                     alert(err.message);
                 })
-        //}
-
         e.preventDefault();
     }
 
     loginpannel(e) {
         const logpanel = {
-            logpanelemail: this.state.panelemail,
-            logpanelpwd: this.state.panelpwd
+            logemail: this.state.panelemail,
+            logpwd: this.state.panelpwd
         }
 
-        axios.post('/#', logpanel)
+        axios.post('http://localhost:3001/api/panelmember/checkLogin', logpanel)
         .then((res) => {
-            if(res.data.logpanelemail == 'admin@gmail.com') {
-                window.location = '/#';
+            if(res.data == 'Login Successfull') {
+               // window.location = '/#';
+               alert("hari")
             }
-            else if(res.data) {
-                window.location = '/#';
-            }
+            
             else {
                 document.getElementById("panelogin1").className = "form-control is-invalid";
                 document.getElementById("panelogin2").className = "form-control is-invalid";
                 document.getElementById("panelogin3").innerHTML = 'Invalid Email or Password';
                 document.getElementById("panelogin3").className = "invalid-feedback";
             }
+
         }).catch((err) => {
             alert(err.message);
         })
@@ -203,7 +180,7 @@ class Logins extends React.Component{
                     <img src='https://preview.colorlib.com/theme/bootstrap/login-form-08/images/undraw_file_sync_ot38.svg' width="400px"/>
                 </div>
                 <div className="col-md-6 login-form-2">
-                <h3>Staff Login Form</h3>
+                <h3>Supervisor Login Form</h3>
             <form onSubmit={this.loginWorkingPersonel}>
                 <div className="form-group">
                     <input type="text" 
@@ -220,7 +197,7 @@ class Logins extends React.Component{
                     className="form-control" 
                     placeholder="Your Password *" 
                     id="otherslogin2"
-                    value={this.state.setWorkingPersonelPW} 
+                    value={this.state.workerPW} 
                     onChange={this.setWorkingPersonelPW}/>
                     <div id="otherslogin3"></div>
                 </div><br/>
@@ -236,7 +213,7 @@ class Logins extends React.Component{
             <div className="container login-container">
                 <div className="row">
                     <div className="col-md-6 login-form-2">
-                        <h3>Staff Login Form</h3>
+                        <h3>Panel Member Login Form</h3>
                         <form onSubmit={this.loginpannel}>
                             <div className="form-group">
                                 <input type="text" 
