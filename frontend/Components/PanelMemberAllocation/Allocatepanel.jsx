@@ -1,49 +1,89 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import axios from "axios";
 import "./Allocatepannel.css";
 
-const MemberList = (props) => {
+function MemberList(props) {
+  const [groupid, setgroupid] = useState("");
+  const [panelmember, setpanelmember] = useState("");
+
+  
+  const addbutton=(e)=> {
+    const Members = {
+      id: props.memberlist._id,
+      grpID: groupid,
+      allocatedPM: panelmember,
+    };
+
+    axios
+      .put("http://localhost:3001/api/projectGroup/updatePM_ID", Members)
+      .then(() => {
+        alert("Panel Member and Group ID Allocated");
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+
+    console.log(Members)
+  }
+
   return (
     <tr>
-      <td className="csan">{props.MemberList()}</td>
+      <td className="csan">
+        {props.memberlist.leader}
+        <br />
+        {props.memberlist.member2}
+        <br />
+        {props.memberlist.member3}
+        <br />
+        {props.memberlist.member4}
+      </td>
 
       <td className="csan">
         <input
           type={"text"}
           className="form-control"
           placeholder="Group ID *"
-          value={props.groupid}
-          onChange={props.setgroupid()}
+          value={groupid}
+          onChange={(e) => {
+            setgroupid(e.target.value);
+          }}
         />
-        {/* <div onChange={props.setpannel()}>
+      </td>
+      <td className="csan">
+      
+        <div onChange={(e)=>{setpanelmember(e.target.value)}}>
           <select class="form-select" aria-label="Default select example">
-            <option selected>Panel Member</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+          <option >Please Select..</option>
+          {
+            props.panel.map((pan)=>{
+              return(<option value={pan.Email}>{pan.fullname}</option>)
+            })
+          }
+            
           </select>
         </div>
-        &nbsp; */}
-        <input
+      </td>
+      <td className="csan">
+        {/* <input
           type={"text"}
           className="form-control"
           placeholder="panel member Email *"
-          value={props.panelallocate}
-          onChange={props.setpannel()}
-        />
+          value={panelmember}
+          onChange={(e)=>{setpanelmember(e.target.value)}}
+        /> */}
         <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
           <button
             type="button"
-            className="btn btn-primary btn-lg"
-            onClick={props.addbutton()}
+            className="btn btn-primary btn-sm"
+            onClick={addbutton}
           >
-            Add
+            Submit
           </button>
         </div>
       </td>
     </tr>
   );
-};
+}
 
 export default class panelmemallocate extends Component {
   constructor(props) {
@@ -57,7 +97,7 @@ export default class panelmemallocate extends Component {
 
     this.setgroupid = this.setgroupid.bind(this);
     this.setpannel = this.setpannel.bind(this);
-    this.addbutton = this.addbutton.bind(this);
+    this.DisplayMemberList = this.DisplayMemberList.bind(this);
   }
 
   setgroupid(e) {
@@ -67,28 +107,12 @@ export default class panelmemallocate extends Component {
     this.setState({ panelallocate: e.target.value });
   }
 
-  addbutton(e) {
-    const Members = {
-      id: this.state._id,
-      memberlist: this.state.MemberList,
-      Groupid: this.state.groupid,
-      PanelAllo: this.state.panelallocate,
-    };
-
-    axios
-      .post("#", Members)
-      .then(() => {
-        alert("Panel Member and Group ID Allocated");
-      })
-      .catch((err) => {
-        alert(err.message);
-      });
-  }
 
   componentDidMount() {
     axios
       .get("http://localhost:3001/api/projectGroup/getAll")
       .then((res) => {
+        console.log(res.data);
         //get all info about groups
         this.setState({ MemberList: res.data });
       })
@@ -96,26 +120,26 @@ export default class panelmemallocate extends Component {
         console.log(err);
       });
 
-    // axios
-    //   .get("http://localhost:3001/api/panelmember/getAll")
-    //   .then((res) => {
-    //     //get all info about groups
-    //     this.setState({ panel: res.data });
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    axios
+      .get("http://localhost:3001/api/panelmember/getAll")
+      .then((res) => {
+        //get all info about groups
+        this.setState({ panel: res.data });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
-  MemberList() {
+  DisplayMemberList() {
     return this.state.MemberList.map((currentmember) => {
-      return <MemberList memberlist={currentmember} />;
+      return <MemberList memberlist={currentmember} panel={this.state.panel} />;
     });
   }
 
   render() {
     return (
-      <div>
+      <div className="container">
         <div>
           <br />
           <table class="membertable table table-hover">
@@ -130,10 +154,12 @@ export default class panelmemallocate extends Component {
                 <th className="csan" scope="col">
                   PanelMember allocation
                 </th>
-                <th className="csan" scope="col"></th>
+                <th className="csan" scope="col">
+                  {" "}
+                </th>
               </tr>
             </thead>
-            {/* <tbody>{this.groupMemberList()}</tbody> */}
+            <tbody>{this.DisplayMemberList()}</tbody>
           </table>
           <br />
           <br />
