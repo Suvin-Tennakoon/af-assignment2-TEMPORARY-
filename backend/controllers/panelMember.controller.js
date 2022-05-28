@@ -54,7 +54,7 @@ const checkLoginPanelMember = (req, res) => {
     const logemail = req.body.logemail;
     const logpwd = req.body.logpwd;
 
-    if(logemail.split(0,4) == 'admin'){
+    if(logemail.slice(0,5) == 'admin'){
         Admin.find({Email:logemail}).then((Admin) => {
             if((!Admin[0]) || (Admin[0].password != logpwd)){
                 res.json('Invalid Username or Password');

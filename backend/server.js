@@ -26,6 +26,8 @@ app.use("/api/student", studentRoutes);
 const supervisorRoutes = require('./routes/supervisor.routes');
 app.use('/api/supervisor', supervisorRoutes);
 
+const projectGroupRoutes = require('./routes/projectGroup.routes');
+app.use('/api/projectGroup', projectGroupRoutes);
 
 app.listen(3001, () => {
     console.log("Server is Running");

@@ -8,7 +8,8 @@ const newSupervisorSchema = new Schema({
     pnum: String,
     Email :String,
     password: String,
-    title: String
+    title: String,
+    researchArea:String
 });
 
 const Supervisor = mongoose.model("Supervisor", newSupervisorSchema);

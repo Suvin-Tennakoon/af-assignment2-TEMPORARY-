@@ -7,13 +7,15 @@ const signUpSupervisor = (req, res)=> {
     const Email = req.body.Email;
     const password = req.body.password;
     const title = req.body.title;
+    const researchArea = req.body.researchArea;
 
     const newSupervisor = new Supervisor({
         fullname,
         pnum,
         Email,
         password,
-        title
+        title,
+        researchArea
     });
 
     newSupervisor.save().then((Supervisor) => {
