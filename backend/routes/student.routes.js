@@ -10,6 +10,6 @@ router.get('/getAll', getAllStudents);
 router.delete('/delete/:id', deleteStudent);
 router.get('/getById/:id', getStudentById);
 router.put('/updateStudent/:id', updateStudent);
-router.get('/checkLogin', checkLoginStudent);
+router.post('/checkLogin', checkLoginStudent);
 
 module.exports = router;

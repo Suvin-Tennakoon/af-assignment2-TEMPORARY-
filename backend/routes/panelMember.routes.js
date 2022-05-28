@@ -11,6 +11,6 @@ router.get('/getAll', getAllPanelMembers);
 router.delete('/delete/:id', deletePanelMember);
 router.get('/getPanelMemberById/:id', getPanelMemberById);
 router.put('/updatePanelMember/:id', updatePanelMember);
-router.get('/checkLogin', checkLoginPanelMember);
+router.post('/checkLogin', checkLoginPanelMember);
 
 module.exports = router;
