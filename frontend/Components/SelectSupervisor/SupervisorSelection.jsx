@@ -10,13 +10,10 @@ const Supervisor = (props) => {
   return (
     <tr>
       <th className="csan" scope="row">
-        {props.supervisor.reseachArea}
+        {props.supervisor.researchArea}
       </th>
 
       <td className="csan">{props.supervisor.fullname}</td>
-      {/* <td className="csan">{props.supplier.lastname}</td>
-        <td className="csan">{props.supplier.pnum}</td>
-        <td className="csan">{props.supplier.Email}</td> */}
 
       <td className="csan">
         <button
@@ -39,13 +36,10 @@ const CoSupervisor = (props) => {
   return (
     <tr>
       <th className="csan" scope="row">
-        {props.cosupervisor.reseachArea}
+        {props.cosupervisor.researchArea}
       </th>
 
       <td className="csan">{props.cosupervisor.fullname}</td>
-      {/* <td className="csan">{props.supplier.lastname}</td>
-          <td className="csan">{props.supplier.pnum}</td>
-          <td className="csan">{props.supplier.Email}</td> */}
 
       <td className="csan">
         <button
@@ -68,20 +62,11 @@ class SupervisorSelection extends React.Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:3001/acceptsupplier/get")
+      .get("http://localhost:3001/api/supervisor/getForProjectgroups")
       .then((res) => {
         //get all info about a supplier
-        this.setState({ Supervisor: res.data });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    axios
-      .get("http://localhost:3001/acceptsupplier/get")
-      .then((res) => {
-        //get all info about a supplier
-        this.setState({ CoSupervisor: res.data });
+        this.setState({ Supervisor: res.data.finalSups });
+        this.setState({ CoSupervisor: res.data.finalCoSups });
       })
       .catch((err) => {
         console.log(err);
@@ -93,7 +78,7 @@ class SupervisorSelection extends React.Component {
       return <Supervisor supervisor={currentsupervisor} />;
     });
   }
-
+  
   CoSupevisorList() {
     return this.state.CoSupervisor.map((currentcosupervisor) => {
       return <CoSupervisor cosupervisor={currentcosupervisor} />;
@@ -102,7 +87,7 @@ class SupervisorSelection extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <br />
         <br />
         <table class="chamoditable table table-hover">
@@ -114,10 +99,7 @@ class SupervisorSelection extends React.Component {
               <th className="csan" scope="col">
                 Supervisor Name
               </th>
-              <th className="csan" scope="col">
-                Group Count
-              </th>
-              <th className="csan" scope="col"></th>
+              <th className="csan" scope="col">Send Request</th>
             </tr>
           </thead>
           <tbody>

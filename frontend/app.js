@@ -32,7 +32,7 @@ function App() {
         <Route path="/regpanel" exact component={registerpanelMember} />
         <Route path="/panelmemallo" exact component={panelmemallocate} />
         <Route path="/updateuser/:id/:type" exact component={UpdateUser} />
-        <Route path="/createstd" exact component={createStudentGroups} />
+        <Route path="/createstdgrp" exact component={createStudentGroups} />
         <Route path="/dashbord" exact component={DashBord} />
         <Route path="/registertopic" exact component={RegisterTopic} />
         <Route path="/selectsupervisor" exact component={SupervisorSelection} />
