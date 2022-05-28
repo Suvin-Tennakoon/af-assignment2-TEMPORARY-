@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from 'axios';
+import axios from "axios";
 
 class createStudentGroups extends React.Component {
   constructor(props) {
@@ -87,7 +87,7 @@ class createStudentGroups extends React.Component {
         alert(err.message);
       });
 
-      e.preventDefault();
+    e.preventDefault();
   }
   //after submission, user will redirected here
   //window.location = '/';
@@ -125,7 +125,8 @@ class createStudentGroups extends React.Component {
                               value={this.state.memberone}
                               onChange={this.setMemberone}
                               required
-                            /><br/>
+                            />
+                            <br />
                             <div id="fr"></div>
                           </div>
 
@@ -141,7 +142,8 @@ class createStudentGroups extends React.Component {
                               value={this.state.membertwo}
                               onChange={this.setMembertwo}
                               required
-                            /><br/>
+                            />
+                            <br />
                             <div id="pn"></div>
                           </div>
 
@@ -157,7 +159,8 @@ class createStudentGroups extends React.Component {
                               value={this.state.memberthree}
                               onChange={this.setMemberthree}
                               required
-                            /><br/>
+                            />
+                            <br />
                             <div id="em"></div>
                           </div>
 
@@ -173,7 +176,8 @@ class createStudentGroups extends React.Component {
                               value={this.state.memberfour}
                               onChange={this.setMemberfour}
                               required
-                            /><br/>
+                            />
+                            <br />
                             <div id="ps"></div>
                           </div>
                           <br />
