@@ -87,7 +87,7 @@ export default class panelmemallocate extends Component {
 
   componentDidMount() {
     axios
-      .get("")
+      .get("http://localhost:3001/api/projectGroup/getAll")
       .then((res) => {
         //get all info about groups
         this.setState({ MemberList: res.data });
