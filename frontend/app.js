@@ -12,6 +12,7 @@ import registerSupervisor from "./Components/Register/RegSupervisor";
 import registerpanelMember from "./Components/Register/RegPanelmember";
 import panelmemallocate from "./Components/PanelMemberAllocation/Allocatepanel";
 import UpdateUser from "./Components/UpdateUser/UpdateUser";
+import createStudentGroups from "./Components/CreateGroups/CreateGroup";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/regpanel" exact component={registerpanelMember} />
         <Route path="/panelmemallo" exact component={panelmemallocate} />
         <Route path="/updateuser/:id/:type" exact component={UpdateUser} />
+        <Route path="/createstd" exact component={createStudentGroups} />
         <Route path="/" component={Footer} />
       </switch>
     </Router>

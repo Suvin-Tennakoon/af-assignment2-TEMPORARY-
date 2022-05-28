@@ -13,7 +13,9 @@ class registerSupervisor extends React.Component {
     this.setSupervisorPhone = this.setSupervisorPhone.bind(this);
     this.setSupervisorEmail = this.setSupervisorEmail.bind(this);
     this.setSupervisorPassword = this.setSupervisorPassword.bind(this);
+    this.setReasearchArea = this.setReasearchArea.bind(this);
     this.settitle = this.settitle.bind(this);
+
     this.saveSupervisorData = this.saveSupervisorData.bind(this);
 
     this.state = {
@@ -22,6 +24,7 @@ class registerSupervisor extends React.Component {
       email: "",
       passwords: "",
       title: "Co-Supervisor",
+      Reaseacharea:"",
     };
   }
 
@@ -46,6 +49,10 @@ class registerSupervisor extends React.Component {
     this.setState({ title: e.target.value });
   }
 
+  setReasearchArea(e){
+    this.setState({Reaseacharea: e.target.value});
+  }
+
   saveSupervisorData(e) {
     const Supervisor = {
       fullname: this.state.fname,
@@ -53,6 +60,7 @@ class registerSupervisor extends React.Component {
       Email: this.state.email,
       password: this.state.passwords,
       title: this.state.title,
+      reaseacharea: this.state.Reaseacharea
     };
 
     //send data to backend
@@ -82,7 +90,11 @@ class registerSupervisor extends React.Component {
         document.getElementById("ps").className = "invalid-feedback";
         return;
       }
-    } else {
+    } else if (!this.state.Reaseacharea) {
+      document.getElementById("id7").className = "form-control is-invalid";
+      document.getElementById("ra").innerHTML = "Research area Cannot be Empty";
+      document.getElementById("ra").className = "invalid-feedback";
+    }else {
       console.log(Supervisor)
         axios
           .post("http://localhost:3001/api/supervisor/add", Supervisor)
@@ -164,6 +176,22 @@ class registerSupervisor extends React.Component {
                             />
                             <div id="em"></div>
                           </div>
+
+                          <div>
+                            <label className="form-label" for="form3Example3c">
+                              Reasearch Area
+                            </label>
+                            <input
+                              type="text"
+                              id="id7"
+                              className="form-control"
+                              value={this.state.Reaseacharea}
+                              onChange={this.setReasearchArea}
+                              required
+                            />
+                            <div id="ra"></div>
+                          </div>
+
 
                           <div>
                             <label className="form-label" for="form3Example3c">
