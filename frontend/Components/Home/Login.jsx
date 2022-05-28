@@ -61,11 +61,12 @@ class Logins extends React.Component{
             logpwd: this.state.stupwd
         }
 
-        axios.post('#', logstudent)
+        axios.get('http://localhost:3001/api/student/checkLogin', logstudent)
             .then((res) => {
                 if(res.data == 'Login Successfull') {
                     // localStorage.setItem('customer', this.state.cusMobile);
-                    window.location = '/#';
+                    alert("hari");
+                   // window.location = '/';
                 }
                 else {
                     document.getElementById("chmdilog1").className = "form-control is-invalid";
@@ -77,6 +78,7 @@ class Logins extends React.Component{
                 alert(err.message);
             })
         e.preventDefault();
+
     }
 
     loginWorkingPersonel(e) {
