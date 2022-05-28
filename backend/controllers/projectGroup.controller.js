@@ -1,7 +1,6 @@
-
 const ProjectGroup = require('../models/projectGroup.model');
 
-const addNewProjectGroup = (req, res)=> {
+const addNewProjectGroup = (req, res) => {
     const leader = req.body.leader;
     const member2 = req.body.member2;
     const member3 = req.body.member3;
@@ -9,8 +8,8 @@ const addNewProjectGroup = (req, res)=> {
     const topic = '';
     const allocatedPM = '';
     const grpID = '';
-    const allocatedSupervisor='';
-    const allocatedCoSup='';
+    const allocatedSupervisor = '';
+    const allocatedCoSup = '';
 
     const newProjectGroup = new ProjectGroup({
         leader,
@@ -32,6 +31,15 @@ const addNewProjectGroup = (req, res)=> {
 
 }
 
-module.exports ={
-    addNewProjectGroup
+const getAllProjectGroups = (req, res) => {
+    ProjectGroup.find().then((ProjectGroup) => {
+        res.json(ProjectGroup);
+    }).catch((err) => {
+        res.json(err);
+    })
+}
+
+module.exports = {
+    addNewProjectGroup,
+    getAllProjectGroups
 }
