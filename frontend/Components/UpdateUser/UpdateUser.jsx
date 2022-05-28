@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory, useParams } from "react-router-dom";
+import Supervisor from "../../../backend/models/supervisor.model";
 
 function UpdateUser(props) {
   const { id, type } = useParams();
@@ -13,7 +14,45 @@ function UpdateUser(props) {
   const [firstname, setfname] = useState();
   const [pnum, setpnum] = useState();
   const [Email, setEmail] = useState();
-  const[password,setpassword] = useState();
+  const [password, setpassword] = useState();
+  const [title, settitle] = useState();
+
+  const radBtn = () => {
+    if (type == "supervisor") {
+      return (
+        <div>
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="radio"
+              name="flexRadioDefault"
+              id="flexRadioDefault1"
+              value="Supervisor"
+              checked={title=="Supervisor"}
+              onChange={(e)=>{settitle(e.target.value)}}
+            />
+            <label className="form-check-label" htmlFor="flexRadioDefault1">
+              Supervisor
+            </label>
+          </div>
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="radio"
+              name="flexRadioDefault"
+              id="flexRadioDefault2"
+              value="Co-Supervisor"
+              checked={title=="Co-Supervisor"}
+              onChange={(e)=>{settitle(e.target.value)}}
+            />
+            <label className="form-check-label" htmlFor="flexRadioDefault2">
+              Co-Supervisor
+            </label>
+          </div>
+        </div>
+      );
+    }
+  };
 
   useEffect(() => {
     let getUser = () => {
@@ -34,6 +73,7 @@ function UpdateUser(props) {
             setpnum(res.data.pnum);
             setEmail(res.data.Email);
             setpassword(res.data.password);
+            settitle(res.data.title);
           });
       } else if (type == "panelmember") {
         axios
@@ -54,20 +94,20 @@ function UpdateUser(props) {
     e.preventDefault();
 
     const updateUser = {
-      firstname,
       pnum,
       Email,
-      password
+      password,
+      title,
     };
 
     if (type == "student") {
       axios
         .put(
-          "http://localhost:3001/api/student/updateStudent/" + id ,
+          "http://localhost:3001/api/student/updateStudent/" + id,
           updateUser
         )
         .then(() => {
-          alert("Supplier is updated successfully");
+          alert("Student is updated successfully");
           history.push(url);
         })
         .catch((err) => {
@@ -76,11 +116,11 @@ function UpdateUser(props) {
     } else if (type == "supervisor") {
       axios
         .put(
-          "http://localhost:3001/api/supervisor/updateSupervisor/" + id ,
+          "http://localhost:3001/api/supervisor/updateSupervisor/" + id,
           updateUser
         )
         .then(() => {
-          alert("Supplier is updated successfully");
+          alert("Supervisor is updated successfully");
           history.push(url);
         })
         .catch((err) => {
@@ -89,11 +129,11 @@ function UpdateUser(props) {
     } else if (type == "panelmember") {
       axios
         .put(
-          "http://localhost:3001/api/panelmember/updatePanelMember/" + id ,
+          "http://localhost:3001/api/panelmember/updatePanelMember/" + id,
           updateUser
         )
         .then(() => {
-          alert("Supplier is updated successfully");
+          alert("Panel Member is updated successfully");
           history.push(url);
         })
         .catch((err) => {
@@ -142,6 +182,7 @@ function UpdateUser(props) {
                             onChange={(e) => {
                               setfname(e.target.value);
                             }}
+                            disabled
                           />
                         </div>
 
@@ -180,7 +221,7 @@ function UpdateUser(props) {
                             Password
                           </label>
                           <input
-                            type="text"
+                            type="password"
                             id="form3Example97"
                             class="form-control form-control-lg"
                             defaultValue={password}
@@ -189,6 +230,8 @@ function UpdateUser(props) {
                             }}
                           />
                         </div>
+                        {radBtn()}
+
                         <div class="d-flex justify-content-end pt-3">
                           <button
                             type="submit"

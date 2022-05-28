@@ -100,6 +100,7 @@ class registerSupervisor extends React.Component {
         .post("http://localhost:3001/api/supervisor/add", Supervisor)
         .then(() => {
           alert("Supervisor Data Successfuly Inserted");
+          window.location="/"
         })
         .catch((err) => {
           alert(err.message);

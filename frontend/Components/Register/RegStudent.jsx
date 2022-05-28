@@ -98,6 +98,7 @@ class registerstudent extends React.Component{
         axios.post('http://localhost:3001/api/student/add', Student)
         .then(()=> {
             alert('Student Data Successfuly Inserted');
+            window.location="/"
         }).catch((err) => {
             alert(err.message);
         });

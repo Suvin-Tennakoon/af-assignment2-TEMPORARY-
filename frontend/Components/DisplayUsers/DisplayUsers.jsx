@@ -12,6 +12,7 @@ const Student = (props) => {
         .delete("http://localhost:3001/api/student/delete/" + _id)
         .then(() => {
           alert("Student deleted successfully");
+          window.location ="/displayUlist"
         })
         .catch((err) => {
           alert(err.message);
@@ -68,6 +69,7 @@ const Supervisor = (props) => {
         .delete("http://localhost:3001/api/supervisor/delete/" + _id)
         .then(() => {
           alert("Supervisor deleted successfully");
+          window.location ="/displayUlist"
         })
         .catch((err) => {
           alert(err.message);
@@ -124,6 +126,7 @@ const Panelmember = (props) => {
         .delete("http://localhost:3001/api/panelmember/delete/" + _id)
         .then(() => {
           alert("Panel Member deleted successfully");
+          window.location ="/displayUlist"
         })
         .catch((err) => {
           alert(err.message);
