@@ -16,6 +16,8 @@ import createStudentGroups from "./Components/CreateGroups/CreateGroup";
 import DashBord from "./Components/StudentDashBord/StudentDashbord";
 import RegisterTopic from "./Components/TopicRegistration/TopicRegistration";
 import SupervisorSelection from "./Components/SelectSupervisor/SupervisorSelection";
+import Em from "./Components/Email/Em";
+import Upld from "./Components/Upld";
 
 function App() {
   return (
@@ -36,7 +38,11 @@ function App() {
         <Route path="/dashbord" exact component={DashBord} />
         <Route path="/registertopic" exact component={RegisterTopic} />
         <Route path="/selectsupervisor" exact component={SupervisorSelection} />
+        <Route path="/em" component={Em} />
+        <Route path="/fileUpload" component={Upld} />
         <Route path="/" component={Footer} />
+
+
       </switch>
     </Router>
   );
