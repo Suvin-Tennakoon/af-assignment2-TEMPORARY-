@@ -49,8 +49,21 @@ const updatePM_and_ID = (req, res) => {
         .catch(err => res.status(400).json('Error : ' +err));
 }
 
+const updateTopic_andSup = (req, res) => {
+    const grpId = req.body.grpID;
+    const allocatedSup = req.body.allocatedSupervisor;
+    const topic = req.body.topic;
+
+    const update = { topic:topic, allocatedSupervisor:allocatedSup };
+
+    ProjectGroup.findOneAndUpdate({grpID:grpId}, update)
+        .then(() => res.json('Good'))
+        .catch(err => res.status(400).json('Error : ' + err));
+}
+
 module.exports = {
     addNewProjectGroup,
     getAllProjectGroups,
-    updatePM_and_ID
+    updatePM_and_ID,
+    updateTopic_andSup
 }
