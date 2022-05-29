@@ -76,6 +76,24 @@ export default function Em() {
                       name="subject"
                       value="Requesting Supervisor Assistance"
                       class="form-control"
+                      disabled
+                    />
+                  </div>
+                </div>
+              </div>
+              <br />
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="md-form mb-0">
+                    <label for="subject" class="">
+                      Group ID
+                    </label>
+                    <input
+                      type="text"
+                      id="groupid"
+                      name="groupid"
+                      class="form-control"
                     />
                   </div>
                 </div>

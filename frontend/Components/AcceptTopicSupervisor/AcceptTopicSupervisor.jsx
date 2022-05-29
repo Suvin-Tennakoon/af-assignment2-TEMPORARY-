@@ -37,18 +37,18 @@ class AcceptTopicSupervisor extends React.Component {
   acceptResearchTopic(e) {
     console.log("ResearchTopic Data", this.state);
 
-    const ResearchTopic = {
-      supemail: this.state.SupervisorEmail,
-      groupid: this.state.GroupId,
-      researchtopic: this.state.ResearchTopic,
+    const acceptResearchTopic = {
+      allocatedSupervisor: this.state.SupervisorEmail,
+      grpID: this.state.GroupId,
+      topic: this.state.ResearchTopic,
     };
 
     //send data to backend
     //3 parameters: url of backend api, data to send and configurations(optional)
     axios
-      .put("#", ResearchTopic)
+      .put("http://localhost:3001/api/projectGroup/updateTopicSup", acceptResearchTopic)
       .then(() => {
-        alert("Research Topic is accepted");
+        alert("Accept Details are Added");
       })
       .catch((err) => {
         alert(err.message);
