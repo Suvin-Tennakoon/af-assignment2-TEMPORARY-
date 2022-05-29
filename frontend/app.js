@@ -14,8 +14,8 @@ import panelmemallocate from "./Components/PanelMemberAllocation/Allocatepanel";
 import UpdateUser from "./Components/UpdateUser/UpdateUser";
 import createStudentGroups from "./Components/CreateGroups/CreateGroup";
 import DashBord from "./Components/StudentDashBord/StudentDashbord";
-import RegisterTopic from "./Components/TopicRegistration/TopicRegistration";
 import SupervisorSelection from "./Components/SelectSupervisor/SupervisorSelection";
+import AcceptTopicSupervisor from "./Components/AcceptTopicSupervisor/AcceptTopicSupervisor";
 import Em from "./Components/Email/Em";
 import Upld from "./Components/Upld";
 
@@ -36,7 +36,7 @@ function App() {
         <Route path="/updateuser/:id/:type" exact component={UpdateUser} />
         <Route path="/createstdgrp" exact component={createStudentGroups} />
         <Route path="/dashbord" exact component={DashBord} />
-        <Route path="/registertopic" exact component={RegisterTopic} />
+        <Route path="/accepttopicsup" exact component={ AcceptTopicSupervisor} />
         <Route path="/selectsupervisor" exact component={SupervisorSelection} />
         <Route path="/em/:email" component={Em} />
         <Route path="/fileUpload" component={Upld} />
