@@ -5,16 +5,16 @@ const storage = new GridFsStorage({
     url: "mongodb+srv://af_assignment2:asdfg@cluster0.5ttcv.mongodb.net/scad_db?retryWrites=true&w=majority",
     options: { useNewUrlParser: true, useUnifiedTopology: true },
     file: (req, file) => {
-        const match = ["image/png", "image/jpeg"];
+        const match = ["application/pdf", "application/msword", 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
 
         if (match.indexOf(file.mimetype) === -1) {
-            const filename = `${Date.now()}-any-name-${file.originalname}`;
+            const filename = `${file.originalname}`;
             return filename;
         }
 
         return {
-            bucketName: "photos",
-            filename: `${Date.now()}-any-name-${file.originalname}`,
+            bucketName: "documents",
+            filename: `${file.originalname}`,
         };
     },
 });

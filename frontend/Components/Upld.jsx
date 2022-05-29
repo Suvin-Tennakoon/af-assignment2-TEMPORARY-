@@ -5,10 +5,12 @@ export default class Upld extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            file:null
+            file:null,
+            source:''
         }
         this.setFile = this.setFile.bind(this);
         this.submitFile = this.submitFile.bind(this);
+        this.getFile = this.getFile.bind(this);
     }
 
     setFile(e) {
@@ -24,6 +26,11 @@ export default class Upld extends Component {
             .catch((err) => console.log(err))
     }
 
+    getFile() {
+        axios.get('http://localhost:3001/file/Technical.docx')
+            .then((res) => console.log(res.data))
+            .catch((err) => console.log(err))
+    }
 
     render() {
         return (
@@ -34,6 +41,15 @@ export default class Upld extends Component {
                         this.setFile(e)
                     }}/>
                     <button onClick={()=>{this.submitFile()}}>submit</button>
+                    <button onClick={()=>{this.getFile()}}>Get</button>
+                    <div>
+                        <a
+                            href="http://localhost:3001/file/Technical.docx"
+                            download
+                        >
+                            Click to download
+                        </a>
+                    </div>
                 </div>
             </div>
         );
