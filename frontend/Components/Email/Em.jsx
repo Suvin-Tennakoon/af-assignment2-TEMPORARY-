@@ -10,7 +10,7 @@ export default function Em() {
     emailjs
       .sendForm(
         "service_pxk4b39",
-        "template_csz5n9n",
+        "template_t43qcua",
         e.target,
         "6apqiu4nJguh6jaez"
       )
