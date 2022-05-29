@@ -4,8 +4,10 @@ import { Link, useParams, useHistory } from "react-router-dom";
 
 import axios from "axios";
 
+
+
 const Supervisor = (props) => {
-  //const { _id } = useParams()
+  const url = "/em/";
 
   return (
     <tr>
@@ -16,13 +18,15 @@ const Supervisor = (props) => {
       <td className="csan">{props.supervisor.fullname}</td>
 
       <td className="csan">
-        <button
-          type="button"
-          className="btn btn-primary"
-          style={{ backgroundColor: "gray" }}
-        >
-          Email
-        </button>
+        <Link to={url + props.supervisor.Email}>
+          <button
+            type="button"
+            className="btn btn-primary"
+            style={{ backgroundColor: "gray" }}
+          >
+            Email
+          </button>
+        </Link>
       </td>
     </tr>
   );
@@ -31,7 +35,7 @@ const Supervisor = (props) => {
 //--------------------------------------------------------------------------
 
 const CoSupervisor = (props) => {
-  //const { _id } = useParams()
+  const url = "/em/";
 
   return (
     <tr>
@@ -42,13 +46,15 @@ const CoSupervisor = (props) => {
       <td className="csan">{props.cosupervisor.fullname}</td>
 
       <td className="csan">
-        <button
-          type="button"
-          className="btn btn-primary"
-          style={{ backgroundColor: "gray" }}
-        >
-          Email
-        </button>
+        <Link to={url + props.cosupervisor.Email}>
+          <button
+            type="button"
+            className="btn btn-primary"
+            style={{ backgroundColor: "gray" }}
+          >
+            Email
+          </button>
+        </Link>
       </td>
     </tr>
   );
@@ -78,7 +84,7 @@ class SupervisorSelection extends React.Component {
       return <Supervisor supervisor={currentsupervisor} />;
     });
   }
-  
+
   CoSupevisorList() {
     return this.state.CoSupervisor.map((currentcosupervisor) => {
       return <CoSupervisor cosupervisor={currentcosupervisor} />;
@@ -99,7 +105,9 @@ class SupervisorSelection extends React.Component {
               <th className="csan" scope="col">
                 Supervisor Name
               </th>
-              <th className="csan" scope="col">Send Request</th>
+              <th className="csan" scope="col">
+                Send Request
+              </th>
             </tr>
           </thead>
           <tbody>

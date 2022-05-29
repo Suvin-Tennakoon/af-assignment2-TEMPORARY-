@@ -38,7 +38,7 @@ function App() {
         <Route path="/dashbord" exact component={DashBord} />
         <Route path="/registertopic" exact component={RegisterTopic} />
         <Route path="/selectsupervisor" exact component={SupervisorSelection} />
-        <Route path="/em" component={Em} />
+        <Route path="/em/:email" component={Em} />
         <Route path="/fileUpload" component={Upld} />
         <Route path="/" component={Footer} />
 
