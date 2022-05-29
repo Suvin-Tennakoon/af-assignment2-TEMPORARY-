@@ -19,7 +19,7 @@ export default class Upld extends Component {
         const data = new FormData();
         data.append('file', this.state.file);
         console.log(data);
-        axios.post('http://localhost:8080/file/upload', data)
+        axios.post('http://localhost:3001/file/upload', data)
             .then((res) => console.log(res))
             .catch((err) => console.log(err))
     }
