@@ -4,26 +4,26 @@ import { Link, useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 
 const Submition = (props) => {
-  const { _id } = useParams();
-  const url = "/updateuser/";
-
-  const data = [props];
+  const url = "/fileupload/";
 
   return (
     <div>
-      <h2>Submission : {props.submition.submissionName}</h2>
+      <br />
+      <br />
+      <h5>Submission : {props.submition.submissionName}</h5>
 
-      <h6>Additional Details : {props.submition.deadline}</h6>
+      <h6>Additional Details : {props.submition.additionalDetail}</h6>
 
-      <p>Deadline : {props.submition.additionalDetail}</p>
-
-      <button
-        type="button"
-        className="btn btn-primary"
-        style={{ backgroundColor: "gray" }}
-      >
-        Add submission
-      </button>
+      <p style={{ color: "red" }}>
+        Deadline :{props.submition.deadline.toString().slice(0, 10)}
+      </p>
+      <Link to={url + props.submition.submissionName}>
+        <button type="button" className="btn btn-primary btn-sm">
+          Add submission
+        </button>
+      </Link>
+      <br />
+      <br />
     </div>
   );
 };
@@ -54,7 +54,7 @@ class DisplaySubmition extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <br />
         <br />
 
