@@ -23,7 +23,27 @@ const addNewDocSubmission = (req, res) => {
 
 }
 
+const getAllDocSubmissions = (req, res) => {
+
+    let docSubmissions = [];
+    let finalDocs = [];
+
+    DocSubmission.find().then((DocSubmission) => {
+        docSubmissions = DocSubmission;
+
+        docSubmissions.map((doc) => {
+            if(doc.submissionType == 'Presentations' || doc.submissionType == 'Topic Evaluation') {
+                finalDocs.push(doc);
+            }
+        })
+        res.json(finalDocs);
+    }).catch((err) => {
+        res.json(err);
+    })
+}
+
 
 module.exports = {
-    addNewDocSubmission
+    addNewDocSubmission,
+    getAllDocSubmissions
 }
