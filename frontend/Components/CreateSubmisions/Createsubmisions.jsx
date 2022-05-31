@@ -55,7 +55,9 @@ class Createsubmision extends Component {
 
   render() {
     return (
-      <div className="container"><br/><br/>
+      <div className="container">
+        <br />
+        <br />
         <section className="vh-50" style={{ backgroundcolor: "#eee" }}>
           <div className="container h-100">
             <div className="row d-flex justify-content-center align-items-center h-100">
@@ -115,6 +117,19 @@ class Createsubmision extends Component {
                               value={this.state.Additonaldetail}
                               onChange={this.AdditionDetails}
                             ></textarea>
+                          </div>
+                          <br />
+
+                          <div class="md-form">
+                            <label className="form-label" for="form3Example3c">
+                              Template Upload
+                            </label>
+                            <input
+                              class="form-control"
+                              type="file"
+                              id="formFileMultiple"
+                              multiple
+                            />
                           </div>
                           <br />
 

@@ -3,13 +3,16 @@ import emailjs from "emailjs-com";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-export default function Em() {
+export default function Feedback() {
   function sendEmail(e) {
     e.preventDefault(); //This is important, i'm not sure why, but the email won't send without it
 
     emailjs
       .sendForm(
-      
+        "servicegmail",
+        "template_xt571fx",
+        e.target,
+        "GAbCLuv_UNjJLTXBr"
       )
       .then(
         (result) => {
@@ -21,7 +24,7 @@ export default function Em() {
       );
   }
 
-  const { email } = useParams();
+  const { email, type } = useParams();
 
   //const [Email,setEmail]= useState();
   return (
@@ -64,13 +67,13 @@ export default function Em() {
                 <div class="col-md-12">
                   <div class="md-form mb-0">
                     <label for="subject" class="">
-                      Subject
+                      Submission Type
                     </label>
                     <input
                       type="text"
-                      id="subject"
-                      name="sub_line"
-                      value="Requesting Supervisor Assistance"
+                      id="subtype"
+                      name="sbmis_type"
+                      value={type}
                       class="form-control"
                     />
                   </div>
@@ -82,12 +85,12 @@ export default function Em() {
                 <div class="col-md-12">
                   <div class="md-form mb-0">
                     <label for="subject" class="">
-                      Group ID
+                      Marks
                     </label>
                     <input
                       type="text"
-                      id="groupid"
-                      name="grpID"
+                      id="mark"
+                      name="marks"
                       class="form-control"
                     />
                   </div>
@@ -98,11 +101,11 @@ export default function Em() {
               <div class="row">
                 <div class="col-md-12">
                   <div class="md-form">
-                    <label for="message">Selected Topic</label>
+                    <label for="message">Feedback</label>
                     <textarea
                       type="text"
                       id="message"
-                      name="message"
+                      name="feedback"
                       rows="2"
                       class="form-control md-textarea"
                     ></textarea>
