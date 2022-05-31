@@ -10,6 +10,7 @@ const Submition = (props) => {
     <div>
       <br />
       <br />
+      <hr style={{border:"1px solid"}}></hr>
       <h5>Submission : {props.submition.submissionName}</h5>
 
       <h6>Additional Details : {props.submition.additionalDetail}</h6>
@@ -22,6 +23,7 @@ const Submition = (props) => {
           Add submission
         </button>
       </Link>
+      <hr style={{border:"1px solid"}}></hr>
       <br />
       <br />
     </div>
@@ -57,9 +59,9 @@ class DisplaySubmition extends React.Component {
       <div className="container">
         <br />
         <br />
-
+        
         {this.SubmitonList()}
-
+       
         <br />
         <br />
       </div>
