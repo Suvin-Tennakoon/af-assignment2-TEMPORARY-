@@ -48,8 +48,6 @@ function App() {
         <Route path="/em/:email" component={Em} />
         <Route path="/stdfileUpload" component={StdUploadfile} />
         <Route path="/" component={Footer} />
-
-
       </switch>
     </Router>
   );
