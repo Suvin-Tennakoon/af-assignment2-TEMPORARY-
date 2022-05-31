@@ -18,6 +18,7 @@ import SupervisorSelection from "./Components/SelectSupervisor/SupervisorSelecti
 import AcceptTopicSupervisor from "./Components/AcceptTopicSupervisor/AcceptTopicSupervisor";
 import StdUploadfile from "./Components/StudentUploadFile/StudentUploadFile";
 import Createsubmision from "./Components/CreateSubmisions/Createsubmisions";
+import DisplaySubmition from "./Components/DisplaySubmisionDates.jsx/DisplaySubmitionDates";
 import Em from "./Components/Email/Em";
 
 
@@ -41,6 +42,7 @@ function App() {
         <Route path="/accepttopicsup" exact component={ AcceptTopicSupervisor} />
         <Route path="/selectsupervisor" exact component={SupervisorSelection} />
         <Route path="/createsubmision" exact component={Createsubmision} />
+        <Route path="/displaysub" exact component={DisplaySubmition} />
         <Route path="/em/:email" component={Em} />
         <Route path="/stdfileUpload" component={StdUploadfile} />
         <Route path="/" component={Footer} />

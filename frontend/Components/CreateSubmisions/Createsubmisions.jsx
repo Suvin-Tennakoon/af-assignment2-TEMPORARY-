@@ -30,7 +30,7 @@ class Createsubmision extends Component {
   }
 
   AdditionDetails(e) {
-    this.setState({ AdditionDetail: e.target.value });
+    this.setState({ Additonaldetail: e.target.value });
   }
 
   submitdata(e) {
@@ -39,6 +39,8 @@ class Createsubmision extends Component {
       deadline: this.state.Deadline,
       additionalDetail: this.state.Additonaldetail,
     };
+
+    console.log(Createsubmition);
     axios
       .post("http://localhost:3001/api/submission/add", Createsubmition)
       .then(() => {
@@ -48,11 +50,12 @@ class Createsubmision extends Component {
       .catch((err) => {
         alert(err.message);
       });
+    e.preventDefalt();
   }
 
   render() {
     return (
-      <div className="container">
+      <div className="container"><br/><br/>
         <section className="vh-50" style={{ backgroundcolor: "#eee" }}>
           <div className="container h-100">
             <div className="row d-flex justify-content-center align-items-center h-100">
@@ -109,7 +112,7 @@ class Createsubmision extends Component {
                               type="text"
                               className="form-control"
                               id="id3"
-                              vlaue={this.state.Additonaldetail}
+                              value={this.state.Additonaldetail}
                               onChange={this.AdditionDetails}
                             ></textarea>
                           </div>
