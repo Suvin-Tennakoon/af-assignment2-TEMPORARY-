@@ -14,6 +14,7 @@ class DashBord extends React.Component {
         <div className="d-grid gap-3">  
                 <a href="/createstdgrp" className="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Group Registration</a>
                 <a href="displayitem" className="btn btn-secondary btn-lg btn-block" role="button" aria-pressed="true">Research Topic Registration</a>
+                <a href="displayitem" className="btn btn-secondary btn-lg btn-block" role="button" aria-pressed="true">Doccument Submision</a>
             </div><br/>
       </div>
     );
