@@ -16,8 +16,10 @@ import createStudentGroups from "./Components/CreateGroups/CreateGroup";
 import DashBord from "./Components/StudentDashBord/StudentDashbord";
 import SupervisorSelection from "./Components/SelectSupervisor/SupervisorSelection";
 import AcceptTopicSupervisor from "./Components/AcceptTopicSupervisor/AcceptTopicSupervisor";
+import StdUploadfile from "./Components/StudentUploadFile/StudentUploadFile";
+import Createsubmision from "./Components/CreateSubmisions/Createsubmisions";
 import Em from "./Components/Email/Em";
-import Upld from "./Components/Upld";
+
 
 function App() {
   return (
@@ -38,8 +40,9 @@ function App() {
         <Route path="/dashbord" exact component={DashBord} />
         <Route path="/accepttopicsup" exact component={ AcceptTopicSupervisor} />
         <Route path="/selectsupervisor" exact component={SupervisorSelection} />
+        <Route path="/createsubmision" exact component={Createsubmision} />
         <Route path="/em/:email" component={Em} />
-        <Route path="/fileUpload" component={Upld} />
+        <Route path="/stdfileUpload" component={StdUploadfile} />
         <Route path="/" component={Footer} />
 
 
