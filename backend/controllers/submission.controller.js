@@ -4,11 +4,13 @@ const addNewSubmission = (req, res) => {
     const submissionName = req.body.submissionName;
     const deadline = req.body.deadline;
     const additionalDetail = req.body.additionalDetail;
+    const templateName = req.body.templateName;
 
     const newSubmission = new Submission({
         submissionName,
         deadline,
-        additionalDetail
+        additionalDetail,
+        templateName
     });
 
     newSubmission.save().then((Submission) => {

@@ -13,11 +13,13 @@ class Createsubmision extends Component {
     this.setDeadline = this.setDeadline.bind(this);
     this.AdditionDetails = this.AdditionDetails.bind(this);
     this.submitdata = this.submitdata.bind(this);
+    this.setFile = this.setFile.bind(this);
 
     this.state = {
       Submitionname: "",
       Deadline: "",
       Additonaldetail: "",
+      file:null
     };
   }
 
@@ -33,11 +35,16 @@ class Createsubmision extends Component {
     this.setState({ Additonaldetail: e.target.value });
   }
 
+  setFile(e) {
+    this.setState({file: e.target.files[0]});
+  }
+
   submitdata(e) {
     const Createsubmition = {
       submissionName: this.state.Submitionname,
       deadline: this.state.Deadline,
       additionalDetail: this.state.Additonaldetail,
+      templateName: this.state.file.name,
     };
 
     console.log(Createsubmition);
@@ -124,12 +131,13 @@ class Createsubmision extends Component {
                             <label className="form-label" for="form3Example3c">
                               Template Upload
                             </label>
-                            <input
-                              class="form-control"
-                              type="file"
-                              id="formFileMultiple"
-                              multiple
-                            />
+
+
+                            <input className="form-control" type="file" id="formFile" onChange={(e) => {
+                              this.setFile(e)
+                            }}/>
+
+
                           </div>
                           <br />
 

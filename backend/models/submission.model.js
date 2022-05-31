@@ -6,7 +6,8 @@ const { Schema }= mongoose;
 const newSubmissionSchema = new Schema({
     submissionName: String,
     deadline: Date,
-    additionalDetail: String
+    additionalDetail: String,
+    templateName:String
 });
 
 const Submission = mongoose.model("submission", newSubmissionSchema);
