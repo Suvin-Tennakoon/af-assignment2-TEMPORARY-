@@ -21,7 +21,6 @@ import Createsubmision from "./Components/CreateSubmisions/Createsubmisions";
 import DisplaySubmition from "./Components/DisplaySubmisionDates.jsx/DisplaySubmitionDates";
 import FileUpload from "./Components/FileUpload/FileUpload";
 import Em from "./Components/Email/Em";
-import Upld from "./Components/Upld";
 
 
 function App() {
@@ -49,8 +48,6 @@ function App() {
         <Route path="/em/:email" component={Em} />
         <Route path="/stdfileUpload" component={StdUploadfile} />
         <Route path="/" component={Footer} />
-
-
       </switch>
     </Router>
   );
