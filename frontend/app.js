@@ -19,6 +19,7 @@ import AcceptTopicSupervisor from "./Components/AcceptTopicSupervisor/AcceptTopi
 import StdUploadfile from "./Components/StudentUploadFile/StudentUploadFile";
 import Createsubmision from "./Components/CreateSubmisions/Createsubmisions";
 import DisplaySubmition from "./Components/DisplaySubmisionDates.jsx/DisplaySubmitionDates";
+import ViewDocs from "./Components/PanelDocView/ViewDocument";
 import FileUpload from "./Components/FileUpload/FileUpload";
 import Em from "./Components/Email/Em";
 
@@ -47,6 +48,7 @@ function App() {
         <Route path="/fileupload/:subname" exact component={FileUpload} />
         <Route path="/em/:email" component={Em} />
         <Route path="/stdfileUpload" component={StdUploadfile} />
+        <Route path="/docview" component={ViewDocs} />
         <Route path="/" component={Footer} />
       </switch>
     </Router>
