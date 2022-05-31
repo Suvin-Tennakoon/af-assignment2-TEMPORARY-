@@ -19,7 +19,7 @@ class Createsubmision extends Component {
       Submitionname: "",
       Deadline: "",
       Additonaldetail: "",
-      file:null
+      file: null,
     };
   }
 
@@ -36,7 +36,7 @@ class Createsubmision extends Component {
   }
 
   setFile(e) {
-    this.setState({file: e.target.files[0]});
+    this.setState({ file: e.target.files[0] });
   }
 
   submitdata(e) {
@@ -50,12 +50,12 @@ class Createsubmision extends Component {
     console.log(Createsubmition);
     axios
       .post("http://localhost:3001/api/submission/add", Createsubmition)
-        .then(() => {
-          const data = new FormData();
-          data.append('file', this.state.file);
-          console.log(data);
-          axios.post('http://localhost:3001/file/upload', data)
-        })
+      .then(() => {
+        const data = new FormData();
+        data.append("file", this.state.file);
+        console.log(data);
+        axios.post("http://localhost:3001/file/upload", data);
+      })
       .then(() => {
         alert("Submition Added Successfully");
         //window.location="/"
@@ -138,12 +138,14 @@ class Createsubmision extends Component {
                               Template Upload
                             </label>
 
-
-                            <input className="form-control" type="file" id="formFile" onChange={(e) => {
-                              this.setFile(e)
-                            }}/>
-
-
+                            <input
+                              className="form-control"
+                              type="file"
+                              id="formFile"
+                              onChange={(e) => {
+                                this.setFile(e);
+                              }}
+                            />
                           </div>
                           <br />
 
@@ -151,7 +153,9 @@ class Createsubmision extends Component {
                             <button
                               type="button"
                               className="btn btn-primary btn-lg"
-                              onClick={this.submitdata}
+                              onClick={(e) => {
+                                this.submitdata(e);
+                              }}
                             >
                               Submit
                             </button>

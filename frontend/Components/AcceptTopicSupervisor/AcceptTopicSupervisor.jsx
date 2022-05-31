@@ -48,7 +48,7 @@ class AcceptTopicSupervisor extends React.Component {
     axios
       .put("http://localhost:3001/api/projectGroup/updateTopicSup", acceptResearchTopic)
       .then(() => {
-        alert("Accept Details are Added");
+        alert("Accept Details are updated");
       })
       .catch((err) => {
         alert(err.message);

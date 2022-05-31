@@ -15,6 +15,8 @@ const Submition = (props) => {
 
       <h6>Additional Details : {props.submition.additionalDetail}</h6>
 
+      <h6>Template : <a href={`http://localhost:3001/file/${props.submition.templateName}`}>{props.submition.templateName}</a></h6>
+
       <p style={{ color: "red" }}>
         Deadline :{props.submition.deadline.toString().slice(0, 10)}
       </p>
