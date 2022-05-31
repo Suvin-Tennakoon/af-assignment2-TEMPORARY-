@@ -50,6 +50,12 @@ class Createsubmision extends Component {
     console.log(Createsubmition);
     axios
       .post("http://localhost:3001/api/submission/add", Createsubmition)
+        .then(() => {
+          const data = new FormData();
+          data.append('file', this.state.file);
+          console.log(data);
+          axios.post('http://localhost:3001/file/upload', data)
+        })
       .then(() => {
         alert("Submition Added Successfully");
         //window.location="/"
