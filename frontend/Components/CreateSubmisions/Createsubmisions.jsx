@@ -9,11 +9,11 @@ class Createsubmision extends Component {
      *setpanelMemberName() is a user ddefined function. React doesn't know about it.
      *so we need to bind that with library
      */
-    this.setSubmitionName = this.setSubmitionName.bind(this);
     this.setDeadline = this.setDeadline.bind(this);
     this.AdditionDetails = this.AdditionDetails.bind(this);
     this.submitdata = this.submitdata.bind(this);
     this.setFile = this.setFile.bind(this);
+    this.settitle = this.settitle.bind(this);
 
     this.state = {
       Submitionname: "",
@@ -23,9 +23,7 @@ class Createsubmision extends Component {
     };
   }
 
-  setSubmitionName(e) {
-    this.setState({ Submitionname: e.target.value });
-  }
+
 
   setDeadline(e) {
     this.setState({ Deadline: e.target.value });
@@ -37,6 +35,10 @@ class Createsubmision extends Component {
 
   setFile(e) {
     this.setState({ file: e.target.files[0] });
+  }
+
+  settitle(e) {
+    this.setState({ Submitionname: e.target.value });
   }
 
   submitdata(e) {
@@ -63,7 +65,7 @@ class Createsubmision extends Component {
       .catch((err) => {
         alert(err.message);
       });
-    e.preventDefalt();
+    e.preventDefault();
   }
 
   render() {
@@ -91,15 +93,39 @@ class Createsubmision extends Component {
                             <label className="form-label" for="form3Example3c">
                               Submition Name
                             </label>
-                            <input
-                              type="text"
-                              id="id1"
-                              className="form-control"
-                              value={this.state.Submitionname}
-                              onChange={this.setSubmitionName}
-                              required
-                            />
-                            <div id="fr"></div>
+
+
+
+                            <div onChange={this.settitle}>
+                              <div className="form-check">
+                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Presentations"/>
+                                <label className="form-check-label" htmlFor="flexRadioDefault1">
+                                  Presentations
+                                </label>
+                              </div>
+
+                              <div className="form-check">
+                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Topic Evaluation" />
+                                <label className="form-check-label" htmlFor="flexRadioDefault2">
+                                  Topic Evaluation
+                                </label>
+                              </div>
+
+                              <div className="form-check">
+                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" value="Final Thesis" />
+                                <label className="form-check-label" htmlFor="flexRadioDefault3">
+                                  Final Thesis
+                                </label>
+                              </div>
+
+                              <div className="form-check">
+                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" value="Document Submission" />
+                                <label className="form-check-label" htmlFor="flexRadioDefault4">
+                                  Document Submission
+                                </label>
+                              </div>
+
+                            </div>
                           </div>
                           <br />
 
@@ -153,9 +179,7 @@ class Createsubmision extends Component {
                             <button
                               type="button"
                               className="btn btn-primary btn-lg"
-                              onClick={(e) => {
-                                this.submitdata(e);
-                              }}
+                              onClick={(e)=>{this.submitdata(e)}}
                             >
                               Submit
                             </button>
