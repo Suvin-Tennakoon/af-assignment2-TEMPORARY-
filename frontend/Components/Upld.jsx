@@ -5,8 +5,7 @@ export default class Upld extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            file:null,
-            source:''
+            file:null
         }
         this.setFile = this.setFile.bind(this);
         this.submitFile = this.submitFile.bind(this);
@@ -27,9 +26,7 @@ export default class Upld extends Component {
     }
 
     getFile() {
-        axios.get('http://localhost:3001/file/Technical.docx')
-            .then((res) => console.log(res.data))
-            .catch((err) => console.log(err))
+        console.log(this.state.file.name);
     }
 
     render() {

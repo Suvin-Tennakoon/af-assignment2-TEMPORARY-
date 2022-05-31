@@ -21,6 +21,7 @@ import Createsubmision from "./Components/CreateSubmisions/Createsubmisions";
 import DisplaySubmition from "./Components/DisplaySubmisionDates.jsx/DisplaySubmitionDates";
 import FileUpload from "./Components/FileUpload/FileUpload";
 import Em from "./Components/Email/Em";
+import Upld from "./Components/Upld";
 
 
 function App() {
