@@ -64,8 +64,7 @@ class Logins extends React.Component {
       .then((res) => {
         if (res.data == "Login Successfull") {
           // localStorage.setItem('customer', this.state.cusMobile);
-          // window.location = '/';
-          alert("hari");
+          window.location = "/dashbord";
         } else {
           document.getElementById("chmdilog1").className =
             "form-control is-invalid";
@@ -91,8 +90,7 @@ class Logins extends React.Component {
       .post("http://localhost:3001/api/supervisor/checkLogin", logStaff)
       .then((res) => {
         if (res.data == "Login Successfull") {
-          //window.location = '/displayUlist';
-          alert("hari");
+          window.location = '/superviserDashBrd';
         } else {
           document.getElementById("otherslogin1").className =
             "form-control is-invalid";
@@ -120,7 +118,7 @@ class Logins extends React.Component {
       .post("http://localhost:3001/api/panelmember/checkLogin", logpanel)
       .then((res) => {
         if (res.data == "Login Successfull") {
-          // window.location = '/#';
+          window.location = '/panelDashBrd';
           alert("hari");
         } else {
           document.getElementById("panelogin1").className =
@@ -175,7 +173,7 @@ class Logins extends React.Component {
                 </div>
                 <br />
                 <div className="form-group">
-                  <a href="/#" className="ForgetPwd">
+                  <a href="/regstudent" className="ForgetPwd">
                     Don't have an Account? Sign-Up Here..
                   </a>
                 </div>
@@ -230,6 +228,11 @@ class Logins extends React.Component {
                   <input type="submit" className="btnSubmit" value="Login" />
                 </div>
                 <br />
+                <div className="form-group">
+                  <a href="/regsupervisor" className="ForgetPwd">
+                    Don't have an Account? Sign-Up Here..
+                  </a>
+                </div>
               </form>
             </div>
           </div>
