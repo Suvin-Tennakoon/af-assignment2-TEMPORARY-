@@ -22,7 +22,7 @@ const Submition = (props) => {
         className="btn btn-primary"
         style={{ backgroundColor: "gray" }}
       >
-        Add submision
+        Add submission
       </button>
     </div>
   );
