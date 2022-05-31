@@ -19,6 +19,15 @@ const addNewSubmission = (req, res) => {
 
 }
 
+const getAllSubmissions = (req, res) => {
+    Submission.find().then((Submission) => {
+        res.json(Submission);
+    }).catch((err) => {
+        res.json(err);
+    })
+}
+
 module.exports = {
-    addNewSubmission
+    addNewSubmission,
+    getAllSubmissions
 }
