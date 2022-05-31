@@ -6,12 +6,13 @@ const {
 } = require('../controllers/submission.controller');
 
 const {
-    addNewDocSubmission
+    addNewDocSubmission, getAllDocSubmissions
 } = require('../controllers/documentSubmission.controller');
 
 router.post('/add', addNewSubmission);
 router.get('/getAll', getAllSubmissions);
 
 router.post('/addDocSubmission', addNewDocSubmission);
+router.post('/getDocSubmissionPM', getAllDocSubmissions);
 
 module.exports = router;
