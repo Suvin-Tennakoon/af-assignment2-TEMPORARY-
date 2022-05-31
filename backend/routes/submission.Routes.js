@@ -13,6 +13,6 @@ router.post('/add', addNewSubmission);
 router.get('/getAll', getAllSubmissions);
 
 router.post('/addDocSubmission', addNewDocSubmission);
-router.post('/getDocSubmissionPM', getAllDocSubmissions);
+router.get('/getDocSubmissionPM', getAllDocSubmissions);
 
 module.exports = router;
