@@ -32,6 +32,9 @@ app.use('/api/supervisor', supervisorRoutes);
 const projectGroupRoutes = require('./routes/projectGroup.routes');
 app.use('/api/projectGroup', projectGroupRoutes);
 
+const submissionRoutes = require('./routes/submission.Routes');
+app.use('/api/submission', submissionRoutes);
+
 app.listen(3001, () => {
     console.log("Server is Running");
 });
