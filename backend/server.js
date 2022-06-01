@@ -35,6 +35,9 @@ app.use('/api/projectGroup', projectGroupRoutes);
 const submissionRoutes = require('./routes/submission.Routes');
 app.use('/api/submission', submissionRoutes);
 
+const markingSchemeRoutes = require('./routes/markingScheme.routes');
+app.use('/api/markingScheme', markingSchemeRoutes);
+
 app.listen(3001, () => {
     console.log("Server is Running");
 });

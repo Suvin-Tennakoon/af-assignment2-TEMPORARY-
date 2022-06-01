@@ -25,6 +25,7 @@ import Feedback from "./Components/PanelMemberFeedback/FeedBack";
 import SupervisorDashBord from "./Components/SupervisorDashbord/SupervisorDashbord";
 import PanelmemDashBord from "./Components/PanelMemDashBoard/PanelMemDashbord";
 import Em from "./Components/Email/Em";
+import CreateMarkingScheme from "./Components/CreateMarkingScheme/CreateMarkingScheme";
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
         <Route path="/feedback/:email/:type" component={Feedback} />
         <Route path="/superviserDashBrd" component={SupervisorDashBord} />
         <Route path="/panelDashBrd" component={PanelmemDashBord} />
+        <Route path="/createMarking" component={CreateMarkingScheme}/>
         <Route path="/" component={Footer} />
       </switch>
     </Router>
