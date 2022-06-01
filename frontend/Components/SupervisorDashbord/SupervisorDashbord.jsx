@@ -21,7 +21,7 @@ class SupervisorDashBord extends React.Component {
             Topic Acceptance
           </a>
           <a
-            href="/displaysub"
+            href="/downloaddoc"
             className="btn btn-secondary btn-lg btn-block"
             role="button"
             aria-pressed="true"
