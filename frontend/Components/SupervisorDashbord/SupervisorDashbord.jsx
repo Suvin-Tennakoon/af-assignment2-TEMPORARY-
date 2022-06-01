@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "./StudentDashbord.css";
+import "../StudentDashBord/StudentDashbord.css";
 
 class SupervisorDashBord extends React.Component {
   constructor(props) {
