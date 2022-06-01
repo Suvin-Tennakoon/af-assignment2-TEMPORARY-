@@ -11,9 +11,25 @@ class PanelmemDashBord extends React.Component {
     return (
       <div className="container">
         <br />
-        <div className="d-grid gap-3">  
-                <a href="/docview" className="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">View Submissions</a>
-            </div><br/>
+        <div className="d-grid gap-3">
+          <a
+            href="/docview"
+            className="btn btn-secondary btn-lg btn-block"
+            role="button"
+            aria-pressed="true"
+          >
+            View Submissions
+          </a>
+          <a
+            href="/markingshechem"
+            className="btn btn-secondary btn-lg btn-block"
+            role="button"
+            aria-pressed="true"
+          >
+            View Marking Scheme
+          </a>
+        </div>
+        <br />
       </div>
     );
   }

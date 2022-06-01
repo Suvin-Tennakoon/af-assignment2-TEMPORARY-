@@ -9,9 +9,31 @@ class SupMarkingSchema extends React.Component {
     this.state = {
       Markingshem: [],
       totMarks: 0,
+      grpId:''
     };
 
     this.calcMarks = this.calcMarks.bind(this);
+    this.setGroupid = this.setGroupid.bind(this);
+    this.submitmarks = this.submitmarks.bind(this)
+  }
+
+  setGroupid(e){
+      this.setState({grpId: e.target.value})
+  }
+  submitmarks(e){
+    const marks = {
+        type:"Document Submission",
+        grpID : this.state.grpId,
+        marks: this.state.totMarks
+      }
+
+      axios.post('http://localhost:3001/api/markingScheme/addMarks',  marks)
+      .then(()=> {
+          alert('Marks are added');
+          //window.location="/"
+      }).catch((err) => {
+          alert(err.message);
+      });
   }
 
   calcMarks() {
@@ -83,7 +105,7 @@ class SupMarkingSchema extends React.Component {
         <br />
         <lable>Group ID</lable>
         <br />
-        <input></input>
+        <input value={this.state.grpId} onChange={this.setGroupid}></input>
         <br />
         <br />
         <lable>Total Marks</lable>
@@ -92,7 +114,7 @@ class SupMarkingSchema extends React.Component {
         <br />
         <br />
         <center>
-          <button type="button" className="btn btn-primary btn-sm">
+          <button type="button" className="btn btn-primary btn-sm" onClick={this.submitmarks}>
             Submit
           </button>
           <br />

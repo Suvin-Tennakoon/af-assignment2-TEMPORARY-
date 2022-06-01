@@ -5,14 +5,39 @@ import axios from "axios";
 
 
 class MarkingSchema extends React.Component {
+ 
     constructor(props) {
-        super(props);
+     
+      super(props);
         this.state = {
             Markingshem: [],
-            totMarks:0
+            totMarks:0,
+            grpId:"",
         };
 
         this.calcMarks = this.calcMarks.bind(this);
+        this.setGroupId = this.setGroupId.bind(this);
+        this.submit = this.submit.bind(this)
+    }
+
+    setGroupId(e) {
+      this.setState({grpId: e.target.value});
+  }
+
+    submit(e){
+      const marksSchem = {
+        type:"Presentations",
+        grpID : this.state.grpId,
+        marks: this.state.totMarks
+      }
+
+      axios.post('http://localhost:3001/api/markingScheme/addMarks', marksSchem)
+      .then(()=> {
+          alert('Marks are added');
+          //window.location="/"
+      }).catch((err) => {
+          alert(err.message);
+      });
     }
 
     calcMarks() {
@@ -83,12 +108,12 @@ class MarkingSchema extends React.Component {
                 <br/><br/>
                 <lable>Group ID</lable>
                 <br/>
-                <input></input><br/><br/>
+                <input value={this.state.grpId} onChange={this.setGroupId}></input><br/><br/>
                 <lable>Total Marks</lable>
                 <br/>
                 <input value={this.state.totMarks}></input><br/><br/>
                 <center>
-                    <button type="button" className="btn btn-primary btn-sm">Submit</button>
+                    <button type="button" className="btn btn-primary btn-sm" onClick={this.submit}>Submit</button>
                     <br/><br/></center>
                 <br/>
                 <br/>
