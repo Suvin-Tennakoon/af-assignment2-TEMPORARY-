@@ -3,24 +3,26 @@ import { Link, useParams, useHistory } from "react-router-dom";
 
 import axios from "axios";
 
-const Marking = (props) => {
-
-  return props.marking.markingCriteria.map((mc) => {
-    return (
-      <tr>
-        <td className="csan">{mc.markedArea}</td>
-        <td className="csan">
-          <input placeholder={`0/${mc.marksOutOf}`} />
-        </td>
-      </tr>
-    );
-  });
-};
-
-class MarkingSchema extends React.Component {
+class SupMarkingSchema extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { Markingshem: [] };
+    this.state = {
+      Markingshem: [],
+      totMarks: 0,
+    };
+
+    this.calcMarks = this.calcMarks.bind(this);
+  }
+
+  calcMarks() {
+    let x = 0;
+    this.state.Markingshem.map((currentmarking) => {
+      if (currentmarking.submissionType == "Document Submission")
+        currentmarking.markingCriteria.map((mc, i) => {
+          x += parseFloat(document.getElementById(i).value);
+        });
+    });
+    this.setState({ totMarks: x });
   }
 
   componentDidMount() {
@@ -36,14 +38,6 @@ class MarkingSchema extends React.Component {
       .catch((err) => {
         console.log(err);
       });
-  }
-
-  Calculation() {}
-  PanelMarkingschem() {
-    return this.state.Markingshem.map((currentmarking) => {
-      if (currentmarking.submissionType == "Doc")
-        return <Marking marking={currentmarking} />;
-    });
   }
 
   render() {
@@ -62,15 +56,48 @@ class MarkingSchema extends React.Component {
               </th>
             </tr>
           </thead>
-          <tbody>{this.PanelMarkingschem()}</tbody>
-
+          <tbody>
+            {this.state.Markingshem.map((currentmarking) => {
+              if (currentmarking.submissionType == "Document Submission")
+                return currentmarking.markingCriteria.map((mc, i) => {
+                  return (
+                    <tr>
+                      <td className="csan">{mc.markedArea}</td>
+                      <td className="csan">
+                        <input placeholder={`0/${mc.marksOutOf}`} id={i} />
+                      </td>
+                    </tr>
+                  );
+                });
+            })}
+          </tbody>
         </table>
-        <button  type="button" className="btn btn-primary btn-sm">Calculate</button><br/><br/>
-        <lable>Group ID</lable><br/>
-        <input ></input><br/><br/>
-        <lable>Total Marks</lable><br/>
-        <input></input><br/><br/>
-        <center><button  type="button" className="btn btn-primary btn-sm">Submit</button><br/><br/></center>
+        <button
+          type="button"
+          className="btn btn-primary btn-sm"
+          onClick={this.calcMarks}
+        >
+          Calculate
+        </button>
+        <br />
+        <br />
+        <lable>Group ID</lable>
+        <br />
+        <input></input>
+        <br />
+        <br />
+        <lable>Total Marks</lable>
+        <br />
+        <input value={this.state.totMarks}></input>
+        <br />
+        <br />
+        <center>
+          <button type="button" className="btn btn-primary btn-sm">
+            Submit
+          </button>
+          <br />
+          <br />
+        </center>
         <br />
         <br />
       </div>
@@ -78,4 +105,4 @@ class MarkingSchema extends React.Component {
   }
 }
 
-export default MarkingSchema;
+export default SupMarkingSchema;

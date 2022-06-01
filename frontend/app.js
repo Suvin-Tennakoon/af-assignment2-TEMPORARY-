@@ -58,7 +58,7 @@ function App() {
         <Route path="/superviserDashBrd" component={SupervisorDashBord} />
         <Route path="/panelDashBrd" component={PanelmemDashBord} />
         <Route path="/createMarking" component={CreateMarkingScheme}/>
-        <Route path="/supmarkingshechem" component={SupMarkingSchema}/>
+        <Route path="/supmarkingschem" component={SupMarkingSchema}/>
         <Route path="/markingshechem" component={MarkingSchema} />
         <Route path="/" component={Footer} />
        
