@@ -25,6 +25,7 @@ import Feedback from "./Components/PanelMemberFeedback/FeedBack";
 import SupervisorDashBord from "./Components/SupervisorDashbord/SupervisorDashbord";
 import PanelmemDashBord from "./Components/PanelMemDashBoard/PanelMemDashbord";
 import MarkingSchema from "./Components/PanelViewMarkingSchem/ViewMarkingSchem";
+import SupMarkingSchema from "./Components/SupViewMarkingShem/SupervisorMarkingShem";
 import Em from "./Components/Email/Em";
 import CreateMarkingScheme from "./Components/CreateMarkingScheme/CreateMarkingScheme";
 
@@ -57,6 +58,7 @@ function App() {
         <Route path="/superviserDashBrd" component={SupervisorDashBord} />
         <Route path="/panelDashBrd" component={PanelmemDashBord} />
         <Route path="/createMarking" component={CreateMarkingScheme}/>
+        <Route path="/supmarkingshechem" component={SupMarkingSchema}/>
         <Route path="/markingshechem" component={MarkingSchema} />
         <Route path="/" component={Footer} />
        
