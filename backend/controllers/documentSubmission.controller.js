@@ -32,7 +32,7 @@ const getAllDocSubmissions = (req, res) => {
         docSubmissions = DocSubmission;
 
         docSubmissions.map((doc) => {
-            if(doc.submissionType == 'Presentations' || doc.submissionType == 'Topic Evaluation') {
+            if(doc.submissionType == 'Presentations' || doc.submissionType == 'Topic Evaluation' || doc.submissionType == 'Document Submission') {
                 finalDocs.push(doc);
             }
         })

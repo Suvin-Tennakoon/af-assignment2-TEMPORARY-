@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-class AdminDashBord extends React.Component {
+export default class AdminDashBord extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -20,4 +20,3 @@ class AdminDashBord extends React.Component {
     );
   }
 }
-export default AdminDashBord;
