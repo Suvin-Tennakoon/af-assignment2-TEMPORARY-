@@ -4,6 +4,7 @@ import { Link, useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 
 const Marking = (props) => {
+
   return props.marking.markingCriteria.map((mc) => {
     return (
       <tr>
@@ -38,9 +39,9 @@ class MarkingSchema extends React.Component {
   }
 
   Calculation() {}
-  SupervisorMarkingschem() {
+  PanelMarkingschem() {
     return this.state.Markingshem.map((currentmarking) => {
-      if (currentmarking.submissionType == "")
+      if (currentmarking.submissionType == "Doc")
         return <Marking marking={currentmarking} />;
     });
   }
@@ -61,30 +62,15 @@ class MarkingSchema extends React.Component {
               </th>
             </tr>
           </thead>
-          <tbody>{this.SupervisorMarkingschem()}</tbody>
+          <tbody>{this.PanelMarkingschem()}</tbody>
+
         </table>
-        <button type="button" className="btn btn-primary btn-sm">
-          Calculate
-        </button>
-        <br />
-        <br />
-        <lable>Group ID</lable>
-        <br />
-        <input></input>
-        <br />
-        <br />
-        <lable>Total Marks</lable>
-        <br />
-        <input></input>
-        <br />
-        <br />
-        <center>
-          <button type="button" className="btn btn-primary btn-sm">
-            Submit
-          </button>
-          <br />
-          <br />
-        </center>
+        <button  type="button" className="btn btn-primary btn-sm">Calculate</button><br/><br/>
+        <lable>Group ID</lable><br/>
+        <input ></input><br/><br/>
+        <lable>Total Marks</lable><br/>
+        <input></input><br/><br/>
+        <center><button  type="button" className="btn btn-primary btn-sm">Submit</button><br/><br/></center>
         <br />
         <br />
       </div>
