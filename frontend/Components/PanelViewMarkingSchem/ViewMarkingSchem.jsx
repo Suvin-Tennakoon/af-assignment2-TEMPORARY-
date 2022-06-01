@@ -10,8 +10,8 @@ const Marking = (props) => {
 
   return (
     <tr>
-      <td className="csan">{props.marking}</td>
-      <td className="csan"><input  placeholder={props.marking}/></td>
+      <td className="csan">{props.marking.markingCriteria.markedArea}</td>
+      <td className="csan"><input  placeholder={props.marking.markingCriteria.marksOutOf}/></td>
     </tr>
   );
 };
@@ -20,15 +20,18 @@ const Marking = (props) => {
 class MarkingSchema extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {Marking: []};
+    this.state = { Markingshem: []};
   }
 
   componentDidMount() {
     axios
-      .get("http://localhost:3001/api/markingSheam/getAll")
+      .get("http://localhost:3001/api/markingScheme/getAll")
       .then((res) => {
         //get all info about a student
-        this.setState({ Marking: res.data });
+        this.setState({ Markingshem: res.data });
+        
+      }).then((res)=>{
+        console.log(this.state.Markingshem);
       })
       .catch((err) => {
         console.log(err);
@@ -37,7 +40,7 @@ class MarkingSchema extends React.Component {
   }
 
   Markingschem() {
-    return this.state.Marking.map((currentmarking) => {
+    return this.state.Markingshem.map((currentmarking) => {
       return <Marking marking={currentmarking} />;
     });
   }
