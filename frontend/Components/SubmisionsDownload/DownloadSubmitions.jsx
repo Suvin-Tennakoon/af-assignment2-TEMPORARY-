@@ -50,7 +50,7 @@ class DownloadDocs extends React.Component {
                       }}
                     >
                       <div className="card-body">
-                        <h5 className="card-title"></h5>
+                        <h5 className="card-title">Document Submission</h5>
                         <hr style={{ border: "0.5px solid" }}></hr>
                         <p className="card-text">
                           <ul className="order">
