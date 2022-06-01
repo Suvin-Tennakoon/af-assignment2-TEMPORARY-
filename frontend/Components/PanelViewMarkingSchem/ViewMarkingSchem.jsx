@@ -9,10 +9,17 @@ const Marking = (props) => {
   const data = [props];
 
   return (
+   
+        
+      data.marking.map((mark)=>{
     <tr>
-      <td className="csan">{props.marking.markingCriteria.markedArea}</td>
-      <td className="csan"><input  placeholder={props.marking.markingCriteria.marksOutOf}/></td>
+      <td className="csan">{mark.markingCriteria.markedArea}</td>
+      <td className="csan"><input  placeholder={mark.markingCriteria.marksOutOf}/></td>
     </tr>
+      })
+   
+     
+    
   );
 };
 
@@ -39,7 +46,7 @@ class MarkingSchema extends React.Component {
     
   }
 
-  Markingschem() {
+  PanelMarkingschem() {
     return this.state.Markingshem.map((currentmarking) => {
       return <Marking marking={currentmarking} />;
     });
@@ -47,7 +54,7 @@ class MarkingSchema extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <br />
         <br />
         <table class="chamoditable table table-hover">
@@ -63,7 +70,7 @@ class MarkingSchema extends React.Component {
           </thead>
           <tbody>
           
-            {this.Markingschem()}
+            {this.PanelMarkingschem()}
             
           </tbody>
         </table>
