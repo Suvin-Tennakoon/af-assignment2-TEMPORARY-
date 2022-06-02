@@ -17,7 +17,7 @@ import DashBord from "./Components/StudentDashBord/StudentDashbord";
 import SupervisorSelection from "./Components/SelectSupervisor/SupervisorSelection";
 import AcceptTopicSupervisor from "./Components/AcceptTopicSupervisor/AcceptTopicSupervisor";
 import Createsubmision from "./Components/CreateSubmisions/Createsubmisions";
-import DisplaySubmition from "./Components/DisplaySubmisionDates.jsx/DisplaySubmitionDates";
+import DisplaySubmition from "./Components/DisplaySubmisionDates/DisplaySubmitionDates";
 import ViewDocs from "./Components/PanelPresentationDocView/ViewDocument";
 import RTViewDocs from "./Components/PanelResearchTopicDocV/RDocView";
 import FileUpload from "./Components/FileUpload/FileUpload";
@@ -28,6 +28,7 @@ import MarkingSchema from "./Components/PanelViewMarkingSchem/ViewMarkingSchem";
 import SupMarkingSchema from "./Components/SupViewMarkingShem/SupervisorMarkingShem";
 import AdminDashBord from "./Components/AdminDashbord/Admindashbord";
 import DownloadDocs from "./Components/SubmisionsDownload/DownloadSubmitions";
+import EmailToPanel from "./Components/SendEmailToPanelMember/EmailtoPanel";
 import Em from "./Components/Email/Em";
 import CreateMarkingScheme from "./Components/CreateMarkingScheme/CreateMarkingScheme";
 
@@ -63,6 +64,7 @@ function App() {
         <Route path="/createMarking" component={CreateMarkingScheme}/>
         <Route path="/supmarkingschem" component={SupMarkingSchema}/>
         <Route path="/markingshechem" component={MarkingSchema} />
+        <Route path="/emailtopanel/:email/:password" component={EmailToPanel} />
         <Route path="/downloaddoc" component={DownloadDocs} />
         <Route path="/" component={Footer} />
        

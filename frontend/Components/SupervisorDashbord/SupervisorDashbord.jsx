@@ -26,7 +26,7 @@ class SupervisorDashBord extends React.Component {
             role="button"
             aria-pressed="true"
           >
-            Doccument Submission
+            Submitted Documents
           </a>
           <a
             href="/supmarkingschem"

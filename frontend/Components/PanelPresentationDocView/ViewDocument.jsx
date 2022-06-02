@@ -54,7 +54,7 @@ class ViewDocs extends React.Component {
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="rtdocview">
+                <a class="nav-link" href="/topiceval">
                   Topic Evaluation
                 </a>
               </li>
@@ -94,9 +94,9 @@ class ViewDocs extends React.Component {
                           </ul>
                         </p>
                         <center>
-                          <a href={`http://localhost:3001/file/${doc.fileName}`} className="btn btn-primary">Download</a><br/><br/>
+                          <a href={`http://localhost:3001/file/${doc.fileName}`} className="btn btn-success btn-sm">Download</a><br/><br/>
                           <Link to={url +doc.author + "/Presentations"}>
-                          <button  className="btn btn-primary">Give Feedback</button>
+                          <button  className="btn btn-primary btn-sm">Give Feedback</button>
                           </Link>
                         </center>
                       </div>

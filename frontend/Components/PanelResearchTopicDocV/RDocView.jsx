@@ -1,8 +1,12 @@
 import React, { Component, useState } from "react";
 import axios from "axios";
+import { Link, useParams, useHistory } from "react-router-dom";
 import "./RTDocView.css";
 
+const url = "/feedback/"
+
 class RTViewDocs extends React.Component {
+ 
   constructor(props) {
     super(props);
     this.state = {
@@ -45,7 +49,7 @@ class RTViewDocs extends React.Component {
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="docview">
+                <a class="nav-link" href="/docview">
                   Presentation
                 </a>
               </li>
@@ -62,7 +66,7 @@ class RTViewDocs extends React.Component {
           {this.state.Documents.map((doc) => {
             if (doc.submissionType == "Topic Evaluation") {
               return (
-                <div className="sawrap" style={{ float: "left" }}>
+                <div>
                   <div>
                     <div
                       className="card CScard"
@@ -73,31 +77,28 @@ class RTViewDocs extends React.Component {
                       }}
                     >
                       <div className="card-body">
-                        <h5 className="card-title"></h5>
+                        <h5 className="card-title">Topic Evaluation</h5>
+                        <hr style={{ border: "0.5px solid" }}></hr>
                         <p className="card-text">
                           <ul className="order">
-                            <div class="row">
-                              <div class="col-md-4">
-                                <p>
-                                  Student :<b>{doc.author}</b>
-                                </p>
-                                <p>
-                                  Submition Date:
-                                  <b>{doc.submittedDate.slice(0, 10)}</b>
-                                </p>
-                                <p>
-                                  Group ID : <b>{doc.grpID}</b>
-                                </p>
-                              </div>
-                            </div>
+                            <p>
+                              Student :<b>{doc.author}</b>
+                            </p>
+                            <p>
+                              Submition Date:
+                              <b>{doc.submittedDate.slice(0, 10)}</b>
+                            </p>
+                            <p>
+                              Group ID : <b>{doc.grpID}</b>
+                            </p>
                           </ul>
                         </p>
-                        <a
-                          href={`http://localhost:3001/file/${doc.fileName}`}
-                          className="btn btn-primary"
-                        >
-                          Download
-                        </a>
+                        <center>
+                          <a href={`http://localhost:3001/file/${doc.fileName}`} className="btn btn-success btn-sm">Download</a><br/><br/>
+                          <Link to={url +doc.author + "/Topic Evaluation"}>
+                          <button  className="btn btn-primary btn-sm">Give Feedback</button>
+                          </Link>
+                        </center>
                       </div>
                     </div>
                   </div>

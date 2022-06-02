@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link, useParams, useHistory } from "react-router-dom";
 
-
-
+const url = "/emailtopanel/"
 
 class registerpanelMember extends React.Component{
+
+    
+
     constructor(props) {
         super(props);
 
@@ -96,7 +99,7 @@ class registerpanelMember extends React.Component{
   else{
         axios.post('http://localhost:3001/api/panelmember/add', panelMember)
         .then(()=> {
-            alert('panelMember Data Successfuly Inserted');
+            //alert('panelMember Data Successfuly Inserted');
         }).catch((err) => {
             alert(err.message);
         });
@@ -167,8 +170,11 @@ class registerpanelMember extends React.Component{
                                     </div>
                                     </div>
                                 </div><br/>
+                                   
                                     <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                    <Link to={url + this.state.email+"/" + this.state.passwords}>
                                     <button type="button" className="btn btn-primary btn-lg" onClick={this.savepanelMemberData}>Register</button>
+                                    </Link>
                                     </div>
                 
                                 </form>
